@@ -3,7 +3,7 @@ import { NAKSHATRA_ALIAS_MAP, NAKSHATRA_FULL_NAMES, NAVAMSA_COMBINATION, RASI_FU
 import styles from './AstroParseTable.module.scss';
 import { NakshatraPadaData } from '../../data/NakshatraPada.data';
 import type { NakshatraData, NakshatraPadas } from '../../models';
-import type { AstroRowData } from './AstroParseTablemodel';
+import type { AstroRowData } from './AstroParseTable.model';
 
 const planets = [
   { name: 'As' },
