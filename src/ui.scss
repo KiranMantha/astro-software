@@ -87,6 +87,7 @@ details {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     border-bottom: none;
+    padding-bottom: var(--spacing);
 
     & + * {
       border: 1px solid var(--border-color);
@@ -94,7 +95,6 @@ details {
       border-bottom-left-radius: var(--border-radius);
       border-bottom-right-radius: var(--border-radius);
       padding: calc(var(--spacing) * 0.5) var(--spacing);
-      margin-top: var(--spacing);
     }
   }
 }
