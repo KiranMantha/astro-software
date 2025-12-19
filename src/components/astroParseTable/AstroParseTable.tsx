@@ -147,7 +147,9 @@ export function AstroParseTable() {
       {rows.length > 0 ? (
         <>
           <details>
-            <summary>Planet Details</summary>
+            <summary>
+              <strong>Planet Details</strong>
+            </summary>
             <div>
               <table>
                 <thead>
@@ -193,7 +195,9 @@ export function AstroParseTable() {
           </details>
 
           <details>
-            <summary>Navamsa Matrix</summary>
+            <summary>
+              <strong>Navamsa Matrix</strong>
+            </summary>
             <div>
               <table className={styles.matrixTable}>
                 <thead>
@@ -214,6 +218,7 @@ export function AstroParseTable() {
                         const rowPlanetNumber = planetMatrixRef.current[rowPlanet.name];
                         const columnPlanetNumber = planetMatrixRef.current[colPlanet.name];
                         const difference = columnPlanetNumber - rowPlanetNumber;
+                        const isSamplePlanet = rowPlanet.name === colPlanet.name;
 
                         return (
                           <td
@@ -224,7 +229,7 @@ export function AstroParseTable() {
                             onMouseEnter={() => handleCellHover(rowIndex, colIndex)}
                             onMouseLeave={handleMouseLeave}
                           >
-                            {(difference < 0 ? difference + 108 : difference) + 1}
+                            {isSamplePlanet ? 'X' : (difference < 0 ? difference + 108 : difference) + 1}
                           </td>
                         );
                       })}

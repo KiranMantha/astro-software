@@ -1,10 +1,10 @@
 .tabs {
   .tabHeaders {
     display: flex;
-    gap: 12px;
+    gap: var(--spacing);
+    justify-content: center;
 
     button {
-      flex: 1;
       padding: 12px 20px;
       border-radius: 25px;
 
@@ -17,6 +17,6 @@
   }
 
   .tabContent {
-    padding: 20px;
+    padding: var(--spacing);
   }
 }
