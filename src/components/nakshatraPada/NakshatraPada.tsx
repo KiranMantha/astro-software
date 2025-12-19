@@ -1,33 +1,21 @@
-import type { TargetedSubmitEvent } from "preact";
-import { NAKSHATRA_FULL_NAMES } from "../../data/constants";
-import { Select } from "../ui";
-import styles from "./NakshatraPada.module.scss";
-import { useState } from "preact/hooks";
-import { NakshatraPadaData } from "../../data/NakshatraPada.data";
-import type { NakshatraData, NakshatraPadas, PadaInfo } from "../../models";
-import { effect } from "@preact/signals";
-import { selectedNavamsa } from "../../signals";
+import type { TargetedSubmitEvent } from 'preact';
+import { NAKSHATRA_FULL_NAMES } from '../../data/constants';
+import { Select } from '../ui';
+import styles from './NakshatraPada.module.scss';
+import { useState } from 'preact/hooks';
+import { NakshatraPadaData } from '../../data/NakshatraPada.data';
+import type { NakshatraData, NakshatraPadas, PadaInfo } from '../../models';
 
 export const NakshatraPada = () => {
   const [selectedPadaInfo, setSelectedPadainfo] = useState<PadaInfo>();
 
-  effect(() => {
-    const { nakshatra, pada } = selectedNavamsa.value;
-    const data =
-      NakshatraPadaData[nakshatra as keyof NakshatraData][
-        pada as keyof NakshatraPadas
-      ];
-    setSelectedPadainfo(data);
-  });
-
   const handleSubmit = (e: TargetedSubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
-    const selectedNakshatra = formData.get("nakshatra") as keyof NakshatraData;
-    const selectedPada = formData.get("pada") as keyof NakshatraPadas;
+    const selectedNakshatra = formData.get('nakshatra') as keyof NakshatraData;
+    const selectedPada = formData.get('pada') as keyof NakshatraPadas;
     const data = NakshatraPadaData[selectedNakshatra][selectedPada];
     setSelectedPadainfo(data);
-    e.currentTarget.reset();
   };
 
   return (
@@ -37,39 +25,37 @@ export const NakshatraPada = () => {
           fieldName="nakshatra"
           label="Select Nakshatra"
           options={[
-            { label: "Select", value: "" },
+            { label: 'Select', value: '' },
             ...Object.entries(NAKSHATRA_FULL_NAMES).map(([key, value]) => {
               return { label: value, value: key };
-            }),
+            })
           ]}
-          defaultValue={selectedNavamsa.value.nakshatra}
         />
         <Select
           fieldName="pada"
           label="Select Pada"
           options={[
             {
-              label: "Select",
-              value: "",
+              label: 'Select',
+              value: ''
             },
             {
-              label: "Pada 1",
-              value: "1",
+              label: 'Pada 1',
+              value: '1'
             },
             {
-              label: "Pada 2",
-              value: "2",
+              label: 'Pada 2',
+              value: '2'
             },
             {
-              label: "Pada 3",
-              value: "3",
+              label: 'Pada 3',
+              value: '3'
             },
             {
-              label: "Pada 4",
-              value: "4",
-            },
+              label: 'Pada 4',
+              value: '4'
+            }
           ]}
-          defaultValue={selectedNavamsa.value.pada}
         />
         <button type="submit">Submit</button>
       </form>

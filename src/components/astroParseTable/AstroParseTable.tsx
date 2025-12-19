@@ -1,11 +1,8 @@
-import { useRef, useState } from "preact/hooks";
-import {
-  NAKSHATRA_FULL_NAMES,
-  NAVAMSA_COMBINATION,
-  RASI_FULL_NAMES,
-} from "../../data/constants";
-import styles from "./AstroParseTable.module.scss";
-import { selectedNavamsa, selectedView, Views } from "../../signals";
+import { useRef, useState } from 'preact/hooks';
+import { NAKSHATRA_ALIAS_MAP, NAKSHATRA_FULL_NAMES, NAVAMSA_COMBINATION, RASI_FULL_NAMES } from '../../data/constants';
+import styles from './AstroParseTable.module.scss';
+import { NakshatraPadaData } from '../../data/NakshatraPada.data';
+import type { NakshatraData, NakshatraPadas } from '../../models';
 
 type AstroRowData = {
   body: string;
@@ -20,90 +17,82 @@ type AstroRowData = {
 };
 
 export function AstroParseTable() {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState('');
   const [rows, setRows] = useState<AstroRowData[]>([]);
   const planetMatrixRef = useRef<Record<string, number>>({});
   const [hoveredRowIndex, setHoveredRowIndex] = useState<number | null>(null);
   const [hoveredColIndex, setHoveredColIndex] = useState<number | null>(null);
 
   const planets = [
-    { name: "As" },
-    { name: "Sun" },
-    { name: "Moon" },
-    { name: "Mars" },
-    { name: "Mercury" },
-    { name: "Jupiter" },
-    { name: "Venus" },
-    { name: "Saturn" },
-    { name: "Rahu" },
-    { name: "Ketu" },
-    { name: "Bhrigu Bindu" },
+    { name: 'As' },
+    { name: 'Sun' },
+    { name: 'Moon' },
+    { name: 'Mars' },
+    { name: 'Mercury' },
+    { name: 'Jupiter' },
+    { name: 'Venus' },
+    { name: 'Saturn' },
+    { name: 'Rahu' },
+    { name: 'Ketu' },
+    { name: 'Bhrigu Bindu' }
   ];
 
   const parseAstroText = (text: string) => {
     const parsedRows = text
       .trim()
-      .split("\n")
+      .split('\n')
       .filter(Boolean)
       .slice(1)
       .map((line) => {
         const parts = line.trim().split(/\s+/);
 
-        const body = parts.slice(0, parts.length - 5).join(" ");
-        const longitude = parts
-          .slice(parts.length - 5, parts.length - 4)
-          .join(" ");
-        const nakshatra = parts
-          .slice(parts.length - 4, parts.length - 3)
-          .join(" ");
-        const pada = parts.slice(parts.length - 3, parts.length - 2).join(" ");
-        const rasi = parts.slice(parts.length - 2, parts.length - 1).join(" ");
-        const navamsa = parts.slice(parts.length - 1).join(" ");
+        const body = parts.slice(0, parts.length - 5).join(' ');
+        const longitude = parts.slice(parts.length - 5, parts.length - 4).join(' ');
+        let nakshatra = parts.slice(parts.length - 4, parts.length - 3).join(' ');
+        const pada = parts.slice(parts.length - 3, parts.length - 2).join(' ');
+        const rasi = parts.slice(parts.length - 2, parts.length - 1).join(' ');
+        const navamsa = parts.slice(parts.length - 1).join(' ');
+
+        nakshatra = NAKSHATRA_ALIAS_MAP[nakshatra] ?? nakshatra;
 
         return {
           body,
           longitude,
           nakshatraCode: nakshatra,
-          nakshatra:
-            NAKSHATRA_FULL_NAMES[
-              nakshatra as keyof typeof NAKSHATRA_FULL_NAMES
-            ],
+          nakshatra: NAKSHATRA_FULL_NAMES[nakshatra as keyof typeof NAKSHATRA_FULL_NAMES],
           pada,
           rasi: RASI_FULL_NAMES[rasi as keyof typeof RASI_FULL_NAMES],
           rasiCode: rasi,
           navamsa: RASI_FULL_NAMES[navamsa as keyof typeof RASI_FULL_NAMES],
-          navamsaCode: navamsa,
+          navamsaCode: navamsa
         };
       });
     planetMatrixRef.current = {};
     parsedRows.forEach((item) => {
-      let planetName = item.body.trim().split(" ")[0];
-      if (planetName === "Lagna") {
-        planetName = "As";
+      let planetName = item.body.trim().split(' ')[0];
+      if (planetName === 'Lagna') {
+        planetName = 'As';
       }
 
-      if (planetName === "Bhrigu") {
-        planetName = "Bhrigu Bindu";
+      if (planetName === 'Bhrigu') {
+        planetName = 'Bhrigu Bindu';
       }
 
       // Handle potential leading space or (R)
-      if (planetName.includes("(R)")) {
-        planetName = planetName.replace(" (R)", "");
+      if (planetName.includes('(R)')) {
+        planetName = planetName.replace(' (R)', '');
       }
       // Normalize Cancer: Cn -> Ca
       let d1Code = item.rasiCode;
-      if (d1Code === "Cn") {
-        d1Code = "Ca";
+      if (d1Code === 'Cn') {
+        d1Code = 'Ca';
       }
       let d9Code = item.navamsaCode;
-      if (d9Code === "Cn") {
-        d9Code = "Ca";
+      if (d9Code === 'Cn') {
+        d9Code = 'Ca';
       }
       // Get navamsa number
-      const navamsaNum =
-        NAVAMSA_COMBINATION[
-          `${d1Code},${d9Code}` as keyof typeof NAVAMSA_COMBINATION
-        ];
+      const navamsaNum = NAVAMSA_COMBINATION[`${d1Code},${d9Code}` as keyof typeof NAVAMSA_COMBINATION];
       if (navamsaNum) {
         planetMatrixRef.current[planetName] = navamsaNum;
       }
@@ -133,18 +122,18 @@ export function AstroParseTable() {
 
     if (isHoveredRow || isHoveredCol) {
       return {
-        backgroundColor: isIntersection ? "#ffeb3b" : "#fff3cd", // Yellowish for highlight, darker for intersection
+        backgroundColor: isIntersection ? '#ffeb3b' : '#fff3cd' // Yellowish for highlight, darker for intersection
       };
     }
     return {};
   };
 
   const getRowStyle = (rowIndex: number) => {
-    return hoveredRowIndex === rowIndex ? { backgroundColor: "#fff3cd" } : {};
+    return hoveredRowIndex === rowIndex ? { backgroundColor: '#fff3cd' } : {};
   };
 
   const getColStyle = (colIndex: number) => {
-    return hoveredColIndex === colIndex ? { backgroundColor: "#fff3cd" } : {};
+    return hoveredColIndex === colIndex ? { backgroundColor: '#fff3cd' } : {};
   };
 
   return (
@@ -176,7 +165,8 @@ export function AstroParseTable() {
                     <th>Pada</th>
                     <th>Rasi (D1)</th>
                     <th>Navamsa (D9)</th>
-                    <th></th>
+                    <th>Charecterstics</th>
+                    <th>Career Path</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -184,24 +174,23 @@ export function AstroParseTable() {
                     <tr key={idx}>
                       <td>{row.body}</td>
                       <td>{row.longitude}</td>
-                      <td data-nakshatra={row.nakshatraCode}>
-                        {row.nakshatra}
-                      </td>
+                      <td data-nakshatra={`${row.nakshatraCode},${row.pada}`}>{row.nakshatra}</td>
                       <td>{row.pada}</td>
                       <td>{row.rasi}</td>
                       <td>{row.navamsa}</td>
                       <td>
-                        <button
-                          onClick={() => {
-                            selectedNavamsa.value = {
-                              nakshatra: row.nakshatraCode,
-                              pada: row.pada,
-                            };
-                            selectedView.value = Views.NAKSHATRA_PADA;
-                          }}
-                        >
-                          View Nakshatra, pada
-                        </button>
+                        {
+                          NakshatraPadaData[row.nakshatraCode as keyof NakshatraData][row.pada as keyof NakshatraPadas][
+                            'Characteristics'
+                          ]
+                        }
+                      </td>
+                      <td>
+                        {
+                          NakshatraPadaData[row.nakshatraCode as keyof NakshatraData][row.pada as keyof NakshatraPadas][
+                            'Career Path'
+                          ]
+                        }
                       </td>
                     </tr>
                   ))}
@@ -229,21 +218,17 @@ export function AstroParseTable() {
                     <tr key={rowIndex} style={getRowStyle(rowIndex)}>
                       <td style={{ ...getColStyle(-1) }}>{rowPlanet.name}</td>
                       {planets.map((colPlanet, colIndex) => {
-                        const rowPlanetNumber =
-                          planetMatrixRef.current[rowPlanet.name];
-                        const columnPlanetNumber =
-                          planetMatrixRef.current[colPlanet.name];
+                        const rowPlanetNumber = planetMatrixRef.current[rowPlanet.name];
+                        const columnPlanetNumber = planetMatrixRef.current[colPlanet.name];
                         const difference = columnPlanetNumber - rowPlanetNumber;
 
                         return (
                           <td
                             style={{
-                              cursor: "pointer",
-                              ...getCellStyle(rowIndex, colIndex),
+                              cursor: 'pointer',
+                              ...getCellStyle(rowIndex, colIndex)
                             }}
-                            onMouseEnter={() =>
-                              handleCellHover(rowIndex, colIndex)
-                            }
+                            onMouseEnter={() => handleCellHover(rowIndex, colIndex)}
                             onMouseLeave={handleMouseLeave}
                           >
                             {difference < 0 ? difference + 108 : difference}

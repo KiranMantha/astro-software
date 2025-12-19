@@ -1,3 +1,8 @@
+export const NAKSHATRA_ALIAS_MAP: Record<string, string> = {
+  Visa: 'Vish',
+  Aswi: 'Ashv'
+};
+
 export const NAKSHATRA_FULL_NAMES = {
   Ashv: 'Ashwini',
   Bhar: 'Bharani',
@@ -25,7 +30,7 @@ export const NAKSHATRA_FULL_NAMES = {
   Sata: 'Satabhisha',
   PBha: 'Purva Bhadra',
   UBha: 'Uttara Bhadra',
-  Reva: 'Revati',
+  Reva: 'Revati'
 };
 
 export const RASI_FULL_NAMES = {
@@ -40,7 +45,7 @@ export const RASI_FULL_NAMES = {
   Sg: 'Sagittarius',
   Cp: 'Capricorn',
   Aq: 'Aquarius',
-  Pi: 'Pisces',
+  Pi: 'Pisces'
 };
 
 export const PLANET_FULL_NAMES = {
@@ -55,7 +60,7 @@ export const PLANET_FULL_NAMES = {
   Mars: 'Mars',
   Uranus: 'Uranus',
   Neptune: 'Neptune',
-  Pluto: 'Pluto',
+  Pluto: 'Pluto'
 };
 
 export const NAVAMSA_COMBINATION = {
@@ -166,5 +171,5 @@ export const NAVAMSA_COMBINATION = {
   'Pi,Sg': 105,
   'Pi,Cp': 106,
   'Pi,Aq': 107,
-  'Pi,Pi': 108,
+  'Pi,Pi': 108
 };
