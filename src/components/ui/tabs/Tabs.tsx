@@ -1,9 +1,9 @@
-import { useState } from 'preact/hooks';
-import styles from './Tabs.module.scss';
-import type { TabProps } from './Tabs.model';
+import { useState } from "preact/hooks";
+import styles from "./Tabs.module.scss";
+import type { TabProps } from "./Tabs.model";
 
-export const Tabs = ({ tabs }: TabProps) => {
-  const [activeTab, setActiveTab] = useState(0);
+export const Tabs = ({ tabs, defaultTab }: TabProps) => {
+  const [activeTab, setActiveTab] = useState(defaultTab);
 
   return (
     <div className={styles.tabs}>
@@ -11,14 +11,16 @@ export const Tabs = ({ tabs }: TabProps) => {
         {tabs.map((tab, index) => (
           <button
             key={index}
-            className={activeTab === index ? styles.active : ''}
-            onClick={() => setActiveTab(index)}
+            className={activeTab === tab.value ? styles.active : ""}
+            onClick={() => setActiveTab(tab.value)}
           >
             {tab.title}
           </button>
         ))}
       </div>
-      <div className={styles.tabContent}>{tabs[activeTab]?.content}</div>
+      <div className={styles.tabContent}>
+        {tabs.find((tab) => tab.value === activeTab)?.content}
+      </div>
     </div>
   );
 };

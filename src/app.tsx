@@ -1,11 +1,25 @@
-import { AstroParseTable, Tabs, NakshatraPada } from './components';
+import { AstroParseTable, Tabs, NakshatraPada } from "./components";
+import { selectedView, Views } from "./signals";
+import { useLiveSignal } from "@preact/signals/utils";
 
 export function App() {
+  const view = useLiveSignal(selectedView);
   const tabs = [
-    { title: 'Astro Table', content: <AstroParseTable /> },
-    { title: 'Nakshatra Pada', content: <NakshatraPada /> },
-    { title: 'Contact', content: <div>Contact details here.</div> },
+    {
+      title: "Astro Table",
+      value: Views.ASTRO_TABLE,
+      content: <AstroParseTable />,
+    },
+    {
+      title: "Nakshatra Pada",
+      value: Views.NAKSHATRA_PADA,
+      content: <NakshatraPada />,
+    },
   ];
 
-  return <Tabs tabs={tabs} />;
+  console.log(view.value.value);
+
+  return (
+    <Tabs key={view.value.value} tabs={tabs} defaultTab={view.value.value} />
+  );
 }

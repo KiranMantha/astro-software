@@ -5,6 +5,7 @@ import {
   RASI_FULL_NAMES,
 } from "../../data/constants";
 import styles from "./AstroParseTable.module.scss";
+import { selectedNavamsa, selectedView, Views } from "../../signals";
 
 type AstroRowData = {
   body: string;
@@ -36,6 +37,7 @@ export function AstroParseTable() {
     { name: "Saturn" },
     { name: "Rahu" },
     { name: "Ketu" },
+    { name: "Bhrigu Bindu" },
   ];
 
   const parseAstroText = (text: string) => {
@@ -79,6 +81,11 @@ export function AstroParseTable() {
       if (planetName === "Lagna") {
         planetName = "As";
       }
+
+      if (planetName === "Bhrigu") {
+        planetName = "Bhrigu Bindu";
+      }
+
       // Handle potential leading space or (R)
       if (planetName.includes("(R)")) {
         planetName = planetName.replace(" (R)", "");
@@ -101,6 +108,7 @@ export function AstroParseTable() {
         planetMatrixRef.current[planetName] = navamsaNum;
       }
     });
+
     return parsedRows;
   };
 
@@ -168,6 +176,7 @@ export function AstroParseTable() {
                     <th>Pada</th>
                     <th>Rasi (D1)</th>
                     <th>Navamsa (D9)</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -181,6 +190,19 @@ export function AstroParseTable() {
                       <td>{row.pada}</td>
                       <td>{row.rasi}</td>
                       <td>{row.navamsa}</td>
+                      <td>
+                        <button
+                          onClick={() => {
+                            selectedNavamsa.value = {
+                              nakshatra: row.nakshatraCode,
+                              pada: row.pada,
+                            };
+                            selectedView.value = Views.NAKSHATRA_PADA;
+                          }}
+                        >
+                          View Nakshatra, pada
+                        </button>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
