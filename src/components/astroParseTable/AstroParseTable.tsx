@@ -3,18 +3,25 @@ import { NAKSHATRA_ALIAS_MAP, NAKSHATRA_FULL_NAMES, NAVAMSA_COMBINATION, RASI_FU
 import styles from './AstroParseTable.module.scss';
 import { NakshatraPadaData } from '../../data/NakshatraPada.data';
 import type { NakshatraData, NakshatraPadas } from '../../models';
+import type { AstroRowData } from './AstroParseTablemodel';
 
-type AstroRowData = {
-  body: string;
-  longitude: string;
-  nakshatraCode: string;
-  nakshatra: string;
-  pada: string;
-  rasi: string;
-  rasiCode: string;
-  navamsa: string;
-  navamsaCode: string;
-};
+const planets = [
+  { name: 'As' },
+  { name: 'Sun' },
+  { name: 'Moon' },
+  { name: 'Mars' },
+  { name: 'Mercury' },
+  { name: 'Jupiter' },
+  { name: 'Venus' },
+  { name: 'Saturn' },
+  { name: 'Rahu' },
+  { name: 'Ketu' },
+  { name: 'Uranus' },
+  { name: 'Neptune' },
+  { name: 'Pluto' },
+  { name: 'Maandi' },
+  { name: 'Bhrigu Bindu' }
+];
 
 export function AstroParseTable() {
   const [input, setInput] = useState('');
@@ -22,20 +29,6 @@ export function AstroParseTable() {
   const planetMatrixRef = useRef<Record<string, number>>({});
   const [hoveredRowIndex, setHoveredRowIndex] = useState<number | null>(null);
   const [hoveredColIndex, setHoveredColIndex] = useState<number | null>(null);
-
-  const planets = [
-    { name: 'As' },
-    { name: 'Sun' },
-    { name: 'Moon' },
-    { name: 'Mars' },
-    { name: 'Mercury' },
-    { name: 'Jupiter' },
-    { name: 'Venus' },
-    { name: 'Saturn' },
-    { name: 'Rahu' },
-    { name: 'Ketu' },
-    { name: 'Bhrigu Bindu' }
-  ];
 
   const parseAstroText = (text: string) => {
     const parsedRows = text
@@ -154,7 +147,7 @@ export function AstroParseTable() {
       {rows.length > 0 ? (
         <>
           <details>
-            <summary>Navamsa Table</summary>
+            <summary>Planet Details</summary>
             <div>
               <table>
                 <thead>
@@ -200,7 +193,7 @@ export function AstroParseTable() {
           </details>
 
           <details>
-            <summary>Navamsa Matrx</summary>
+            <summary>Navamsa Matrix</summary>
             <div>
               <table className={styles.matrixTable}>
                 <thead>
@@ -231,7 +224,7 @@ export function AstroParseTable() {
                             onMouseEnter={() => handleCellHover(rowIndex, colIndex)}
                             onMouseLeave={handleMouseLeave}
                           >
-                            {difference < 0 ? difference + 108 : difference}
+                            {(difference < 0 ? difference + 108 : difference) + 1}
                           </td>
                         );
                       })}
