@@ -1,0 +1,103 @@
+input,
+textarea,
+select,
+button,
+*[role='button'] {
+  font-size: inherit;
+  padding: calc(var(--spacing) * 0.5) var(--spacing);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background-color: transparent;
+  transition: all 0.25s;
+
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--button-hover-box-shadow);
+  }
+
+  &.disabled,
+  &:disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    background: var(--disabled);
+  }
+}
+
+input,
+textarea,
+select {
+  display: block;
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+select:not([multiple]) {
+  background-position: right calc(var(--spacing) * 0.8) center;
+  background-image: var(--icon-chevron);
+  background-repeat: no-repeat;
+}
+
+button {
+  background-color: var(--gray-150);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+table {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: separate;
+  border-left: 1px solid var(--border-color);
+
+  tr td,
+  tr th {
+    padding: calc(var(--spacing) / 2) var(--spacing);
+    text-align: unset;
+    border-right: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  tr th {
+    border-top: 1px solid var(--border-color);
+    font-weight: 700;
+  }
+}
+
+code,
+output {
+  font-family: monospace;
+}
+
+details {
+  margin-bottom: calc(var(--spacing) * 2);
+
+  & > summary {
+    cursor: pointer;
+    padding: calc(var(--spacing) * 0.5) var(--spacing);
+    line-height: 1.5;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+  }
+
+  &[open] > summary {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: none;
+
+    & + * {
+      border: 1px solid var(--border-color);
+      border-top: none;
+      border-bottom-left-radius: var(--border-radius);
+      border-bottom-right-radius: var(--border-radius);
+      padding: calc(var(--spacing) * 0.5) var(--spacing);
+    }
+  }
+}
+
+details + details {
+  margin-top: calc(var(--spacing) * 1.5);
+}

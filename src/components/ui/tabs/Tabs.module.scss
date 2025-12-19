@@ -1,0 +1,22 @@
+.tabs {
+  .tabHeaders {
+    display: flex;
+    gap: 12px;
+
+    button {
+      flex: 1;
+      padding: 12px 20px;
+      border-radius: 25px;
+
+      &.active {
+        background: var(--theme); /* Blue background for active */
+        border-color: var(--theme);
+        color: var(--white);
+      }
+    }
+  }
+
+  .tabContent {
+    padding: 20px;
+  }
+}
