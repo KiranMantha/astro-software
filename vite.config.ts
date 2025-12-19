@@ -8,5 +8,6 @@ export default defineConfig({
     target: "esnext", // Modern browsers; adjust if needed
     minify: "esbuild", // Efficient minification
     sourcemap: false, // Disable for production (optional)
+    outDir: "docs",
   },
 });
