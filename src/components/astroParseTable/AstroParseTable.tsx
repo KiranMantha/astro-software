@@ -4,7 +4,7 @@ import styles from './AstroParseTable.module.scss';
 import { NakshatraPadaData } from '../../data/NakshatraPada.data';
 import type { NakshatraData, NakshatraPadas } from '../../models';
 import type { AstroRowData } from './AstroParseTable.model';
-import { KarmicDoshas, KarmicNakshatras } from '../../data/KarmicDoshas';
+import { KarmicDoshas, KarmicNakshatras, KarmicPlanets } from '../../data/KarmicDoshas';
 
 const planets = [
   { name: 'As' },
@@ -54,6 +54,12 @@ export function AstroParseTable() {
 
         nakshatra = NAKSHATRA_ALIAS_MAP[nakshatra] ?? nakshatra;
 
+        let karmicPlanet = '';
+
+        Object.entries(KarmicPlanets).forEach(([key, value]) => {
+          if (value.includes(nakshatra)) karmicPlanet = key;
+        });
+
         return {
           body,
           longitude,
@@ -64,7 +70,8 @@ export function AstroParseTable() {
           rasiCode: rasi,
           navamsa: RASI_FULL_NAMES[navamsa as keyof typeof RASI_FULL_NAMES],
           navamsaCode: navamsa,
-          hasKarmicDosha: KarmicNakshatras[rasi as keyof typeof KarmicNakshatras].includes(nakshatra)
+          hasKarmicDosha: KarmicNakshatras[rasi as keyof typeof KarmicNakshatras].includes(nakshatra),
+          karmicPlanet
         };
       });
     planetMatrixRef.current = {};
@@ -175,6 +182,7 @@ export function AstroParseTable() {
                     <th>Charecterstics</th>
                     <th>Career Path</th>
                     <th>Has Karmic Dosha</th>
+                    <th>Karmic Planet</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -212,6 +220,7 @@ export function AstroParseTable() {
                           'No'
                         )}
                       </td>
+                      <td>{row.karmicPlanet}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -275,10 +284,6 @@ export function AstroParseTable() {
               <td>
                 {selectedPlanetDetails?.rasi}, {selectedPlanetDetails?.nakshatra}
               </td>
-            </tr>
-            <tr>
-              <td>Karmic Planet</td>
-              <td>{selectedPlanetDetails?.karmicPlanet}</td>
             </tr>
             <tr>
               <td>Indications</td>

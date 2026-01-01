@@ -13,13 +13,9 @@ export const KarmicNakshatras = {
   Pi: ['UBha']
 };
 
-export const KarmicDoshas: Record<
-  string,
-  { nakshatra: string; karmicPlanet: string; indications: string; remidies: string }
-> = {
+export const KarmicDoshas: Record<string, { nakshatra: string; indications: string; remidies: string }> = {
   Ashv: {
     nakshatra: 'Ashwini',
-    karmicPlanet: 'Sun',
     indications:
       'Disputes related to maternal-side property. Instances of multiple marriages on the mother’s side. The mother may experience prolonged physical or emotional suffering.',
     remidies:
@@ -27,7 +23,6 @@ export const KarmicDoshas: Record<
   },
   Mrig: {
     nakshatra: 'Mrigashira',
-    karmicPlanet: 'Jupiter',
     indications:
       'Possibility of sexual misconduct or abuse in the lineage. Strong anger, harsh speech, disregard for elders, and loss due to short temper. Lack of respect toward women in the family line.',
     remidies:
@@ -35,14 +30,12 @@ export const KarmicDoshas: Record<
   },
   Ardr: {
     nakshatra: 'Ardra',
-    karmicPlanet: 'Venus',
     indications:
       'Strong helping nature, but presence of suicidal tendencies in the lineage. Improper or neglected performance of Pitru Shraddha rituals.',
     remidies: 'Perform Pitru Tarpana during Mahalaya Amavasya (Pitru Paksha period) with sincerity.'
   },
   Asre: {
     nakshatra: 'Ashlesha',
-    karmicPlanet: 'Sun',
     indications:
       'Deceit toward women or killing of four-legged animals in the lineage. Maternal-side relatives may suffer prolonged illness or remain bedridden before death.',
     remidies:
@@ -50,7 +43,6 @@ export const KarmicDoshas: Record<
   },
   PPha: {
     nakshatra: 'Purva Phalguni',
-    karmicPlanet: 'Mars',
     indications:
       'Misuse of trust and leadership for sensual pleasures in the lineage. Ego obstructed the growth of others.',
     remidies:
@@ -58,14 +50,12 @@ export const KarmicDoshas: Record<
   },
   Hast: {
     nakshatra: 'Hasta',
-    karmicPlanet: 'Jupiter',
     indications:
       'Betrayal of a Guru or misuse involving the Guru’s spouse in the lineage. Strong ego and belief of always being right. Missed opportunities. Loss of wealth toward the end of life due to excessive giving to family.',
     remidies: 'Perform Chandra Darshan on Tritiya Tithi. Visit a Goshala and donate food on a Friday during Venus Hora.'
   },
   Chit: {
     nakshatra: 'Chitra',
-    karmicPlanet: 'Venus',
     indications:
       'Denial of property rights to women or misuse of female inheritance in the lineage. Difficulty residing peacefully in one’s own home; business decline when staying at home.',
     remidies:
@@ -73,7 +63,6 @@ export const KarmicDoshas: Record<
   },
   Anu: {
     nakshatra: 'Anuradha',
-    karmicPlanet: 'Sun',
     indications:
       'Acts involving arson, poisoning, or food adulteration in the lineage. Experiences of robbery, fire accidents, government property acquisition with inadequate compensation, and possible death due to fire within the lineage.',
     remidies:
@@ -81,28 +70,24 @@ export const KarmicDoshas: Record<
   },
   Mool: {
     nakshatra: 'Moola',
-    karmicPlanet: 'Mars',
     indications:
       'Overuse or misuse of natural resources (especially water). Insincere charity practices (taking back donated items). Lack of temple prasadam. Water-related issues at home. Inability to remain in preferred places.',
     remidies: 'Donate rice to temples, preferably equal to the individual’s body weight.'
   },
   PSha: {
     nakshatra: 'Purva Ashadha',
-    karmicPlanet: 'Mercury',
     indications:
       'Abuse of authority or power in the lineage. Marital difficulties and lack of authority or recognition despite holding good positions.',
     remidies: 'Donate rice to temples, preferably matching the person’s body weight.'
   },
   USha: {
     nakshatra: 'Uttara Ashadha',
-    karmicPlanet: 'Jupiter',
     indications:
       'Misuse of temple resources leading to a temple-related curse. Illness and family conflicts triggered during temple visits.',
     remidies: 'Donate rice to temples, preferably equivalent to the person’s body weight.'
   },
   Dhan: {
     nakshatra: 'Dhanishta',
-    karmicPlanet: 'Saturn',
     indications:
       'Honor killings related to caste or religion in the lineage. Feeding Tulasi water during others’ final moments, leading to secondary status in society. Marital instability; lack of respect from women; cases of separation.',
     remidies:
@@ -110,7 +95,6 @@ export const KarmicDoshas: Record<
   },
   PBha: {
     nakshatra: 'Purva Bhadra',
-    karmicPlanet: 'Sun',
     indications:
       'Ill-treatment of women (especially daughters-in-law) or contamination of water sources in the lineage. Leads to marriage or childbirth-related issues.',
     remidies:
@@ -118,7 +102,6 @@ export const KarmicDoshas: Record<
   },
   UBha: {
     nakshatra: 'Uttara Bhadra',
-    karmicPlanet: 'Moon',
     indications:
       'Misuse of authority or power in the lineage, particularly actions that obstructed others education or growth. Individuals influenced by this Nakshatra should strictly avoid taking loans or debts on Purva Bhadrapada days, as it may aggravate karmic challenges. There may be a lack of Kula Devata blessings, or the family may have changed its ancestral deity. Residences may be established on land associated with unresolved past karma, leading to instability. Properties may not yield proper resale value, and recurring difficulties related to loans or financial liabilities are common.',
     remidies:
