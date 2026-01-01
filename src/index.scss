@@ -58,6 +58,13 @@
   font-family: inherit;
 }
 
+::-webkit-backdrop {
+  --backdrop-color: rgb(0 0 0/45%);
+}
+::backdrop {
+  --backdrop-color: rgb(0 0 0/45%);
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -67,7 +74,7 @@ body {
 }
 
 #app {
-  max-width: 1440px;
+  max-width: 1920px;
   margin: 0 auto;
   padding: 2rem;
 }

@@ -7,8 +7,31 @@
   margin-bottom: 20px;
 }
 
+.planetDetails td:last-child {
+  button {
+    margin-left: 5px;
+  }
+}
+
 .matrixTable {
   tr td:first-child {
     font-weight: bold;
+  }
+}
+
+.karmicDoshaDialog {
+  table {
+    width: 1000px;
+    border-top: 1px solid var(--border-color);
+
+    td:first-child {
+      font-weight: bold;
+      white-space: nowrap;
+    }
+  }
+
+  div {
+    text-align: center;
+    margin-top: var(--spacing);
   }
 }

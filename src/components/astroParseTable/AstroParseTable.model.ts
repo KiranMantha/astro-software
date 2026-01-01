@@ -8,4 +8,5 @@ export type AstroRowData = {
   rasiCode: string;
   navamsa: string;
   navamsaCode: string;
+  hasKarmicDosha: boolean;
 };

@@ -4,6 +4,7 @@ import styles from './AstroParseTable.module.scss';
 import { NakshatraPadaData } from '../../data/NakshatraPada.data';
 import type { NakshatraData, NakshatraPadas } from '../../models';
 import type { AstroRowData } from './AstroParseTable.model';
+import { KarmicDoshas, KarmicNakshatras } from '../../data/KarmicDoshas';
 
 const planets = [
   { name: 'As' },
@@ -26,9 +27,14 @@ const planets = [
 export function AstroParseTable() {
   const [input, setInput] = useState('');
   const [rows, setRows] = useState<AstroRowData[]>([]);
-  const planetMatrixRef = useRef<Record<string, number>>({});
   const [hoveredRowIndex, setHoveredRowIndex] = useState<number | null>(null);
   const [hoveredColIndex, setHoveredColIndex] = useState<number | null>(null);
+  const [selectedPlanetDetails, setSelectedPlanetDetails] = useState<
+    ((typeof KarmicDoshas)[string] & { rasi: string }) | null
+  >(null);
+
+  const planetMatrixRef = useRef<Record<string, number>>({});
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
   const parseAstroText = (text: string) => {
     const parsedRows = text
@@ -57,7 +63,8 @@ export function AstroParseTable() {
           rasi: RASI_FULL_NAMES[rasi as keyof typeof RASI_FULL_NAMES],
           rasiCode: rasi,
           navamsa: RASI_FULL_NAMES[navamsa as keyof typeof RASI_FULL_NAMES],
-          navamsaCode: navamsa
+          navamsaCode: navamsa,
+          hasKarmicDosha: KarmicNakshatras[rasi as keyof typeof KarmicNakshatras].includes(nakshatra)
         };
       });
     planetMatrixRef.current = {};
@@ -129,6 +136,11 @@ export function AstroParseTable() {
     return hoveredColIndex === colIndex ? { backgroundColor: '#fff3cd' } : {};
   };
 
+  const handleViewKarmicDosha = (nakshatraCode: string, rasi: string) => {
+    setSelectedPlanetDetails({ ...KarmicDoshas[nakshatraCode], rasi });
+    dialogRef.current?.showModal();
+  };
+
   return (
     <div>
       <textarea
@@ -151,7 +163,7 @@ export function AstroParseTable() {
               <strong>Planet Details</strong>
             </summary>
             <div>
-              <table>
+              <table className={styles.planetDetails}>
                 <thead>
                   <tr>
                     <th>Body</th>
@@ -162,6 +174,7 @@ export function AstroParseTable() {
                     <th>Navamsa (D9)</th>
                     <th>Charecterstics</th>
                     <th>Career Path</th>
+                    <th>Has Karmic Dosha</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -186,6 +199,18 @@ export function AstroParseTable() {
                             'Career Path'
                           ]
                         }
+                      </td>
+                      <td>
+                        {row.hasKarmicDosha ? (
+                          <>
+                            <span>Yes</span>
+                            <button data-size="sm" onClick={() => handleViewKarmicDosha(row.nakshatraCode, row.rasi)}>
+                              View
+                            </button>
+                          </>
+                        ) : (
+                          'No'
+                        )}
                       </td>
                     </tr>
                   ))}
@@ -241,6 +266,30 @@ export function AstroParseTable() {
           </details>
         </>
       ) : null}
+
+      <dialog ref={dialogRef} className={styles.karmicDoshaDialog}>
+        <table>
+          <tbody>
+            <tr>
+              <td>Rasi, Nakshatra</td>
+              <td>
+                {selectedPlanetDetails?.rasi}, {selectedPlanetDetails?.nakshatra}
+              </td>
+            </tr>
+            <tr>
+              <td>Indications</td>
+              <td>{selectedPlanetDetails?.indications}</td>
+            </tr>
+            <tr>
+              <td>Remidies</td>
+              <td>{selectedPlanetDetails?.remidies}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div>
+          <button onClick={() => dialogRef.current?.close()}>Close</button>
+        </div>
+      </dialog>
     </div>
   );
 }

@@ -45,6 +45,11 @@ button {
   background-color: var(--gray-150);
   cursor: pointer;
   font-weight: 500;
+
+  &[data-size='sm'] {
+    padding: calc(var(--spacing) * 0.25) calc(var(--spacing) * 0.5);
+    font-size: small;
+  }
 }
 
 table {
@@ -101,4 +106,19 @@ details {
 
 details + details {
   margin-top: calc(var(--spacing) * 1.5);
+}
+
+dialog {
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  border: 0;
+  padding: var(--spacing);
+
+  &::-webkit-backdrop {
+    background-color: var(--backdrop-color);
+  }
+
+  &::backdrop {
+    background-color: var(--backdrop-color);
+  }
 }
