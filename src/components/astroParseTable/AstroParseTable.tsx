@@ -277,6 +277,10 @@ export function AstroParseTable() {
               </td>
             </tr>
             <tr>
+              <td>Karmic Planet</td>
+              <td>{selectedPlanetDetails?.karmicPlanet}</td>
+            </tr>
+            <tr>
               <td>Indications</td>
               <td>{selectedPlanetDetails?.indications}</td>
             </tr>
