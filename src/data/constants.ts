@@ -1,9 +1,11 @@
 export const NAKSHATRA_ALIAS_MAP: Record<string, string> = {
   Visa: 'Vish',
-  Aswi: 'Ashv'
+  Aswi: 'Ashv',
+  Pubba: 'PPha',
+  Uttara: 'UPha'
 };
 
-export const NAKSHATRA_FULL_NAMES = {
+export const NAKSHATRA_FULL_NAMES: Record<string, string> = {
   Ashv: 'Ashwini',
   Bhar: 'Bharani',
   Krit: 'Krittika',
@@ -33,37 +35,37 @@ export const NAKSHATRA_FULL_NAMES = {
   Reva: 'Revati'
 };
 
-export const RASI_FULL_NAMES = {
-  Ar: 'Aries',
-  Ta: 'Taurus',
-  Ge: 'Gemini',
-  Cn: 'Cancer',
-  Le: 'Leo',
-  Vi: 'Virgo',
-  Li: 'Libra',
-  Sc: 'Scorpio',
-  Sg: 'Sagittarius',
-  Cp: 'Capricorn',
-  Aq: 'Aquarius',
-  Pi: 'Pisces'
+export const RASI_FULL_NAMES: Record<string, string> = {
+  Ar: 'Aries (Mesham)',
+  Ta: 'Taurus (Vrishabham)',
+  Ge: 'Gemini (Mithunam)',
+  Cn: 'Cancer (Karkatakam)',
+  Le: 'Leo (Simham)',
+  Vi: 'Virgo (Kanya)',
+  Li: 'Libra (Tula)',
+  Sc: 'Scorpio (Vrischikam)',
+  Sg: 'Sagittarius (Dhanassu)',
+  Cp: 'Capricorn (Makaram)',
+  Aq: 'Aquarius (Kumbham)',
+  Pi: 'Pisces (Meenam)'
 };
 
-export const PLANET_FULL_NAMES = {
+export const PLANET_FULL_NAMES: Record<string, string> = {
+  Sun: 'Sun, Surya',
+  Moon: 'Moon, Chandra',
   Rah: 'Rahu',
-  Jup: 'Jupiter',
-  Sat: 'Saturn',
-  Merc: 'Mercury',
+  Jup: 'Jupiter, Guru',
+  Sat: 'Saturn, Sani',
+  Merc: 'Mercury, Budha',
   Ket: 'Ketu',
-  Ven: 'Venus',
-  Sun: 'Sun',
-  Moon: 'Moon',
-  Mars: 'Mars',
+  Ven: 'Venus, Sukra',
+  Mars: 'Mars, Kuja',
   Uranus: 'Uranus',
   Neptune: 'Neptune',
   Pluto: 'Pluto'
 };
 
-export const NAVAMSA_COMBINATION = {
+export const NAVAMSA_COMBINATION: Record<string, number> = {
   'Ar,Ar': 1,
   'Ar,Ta': 2,
   'Ar,Ge': 3,
@@ -172,4 +174,66 @@ export const NAVAMSA_COMBINATION = {
   'Pi,Cp': 106,
   'Pi,Aq': 107,
   'Pi,Pi': 108
+};
+
+export const MAX_MATCHING_SCORES = [
+  {
+    name: 'Varna',
+    maxScore: 1
+  },
+  {
+    name: 'Vaysa',
+    maxScore: 2
+  },
+  {
+    name: 'Tara',
+    maxScore: 3
+  },
+  {
+    name: 'Yoni',
+    maxScore: 4
+  },
+  {
+    name: 'Graha Maitri',
+    maxScore: 5
+  },
+  {
+    name: 'Gana',
+    maxScore: 6
+  },
+  {
+    name: 'Bhakoot',
+    maxScore: 7
+  },
+  {
+    name: 'Naadi',
+    maxScore: 8
+  }
+];
+
+export const VARNAS: Record<string, string> = {
+  B: 'Brahmin',
+  K: 'Kshatriya',
+  V: 'Vaysya',
+  S: 'Shudra'
+};
+
+export const VASYAS: Record<string, string> = {
+  C: 'Chatushpada',
+  M: 'Maanava',
+  J: 'Jalachara',
+  V: 'Vanachara',
+  K: 'Keetaka'
+};
+
+export const GANAS: Record<string, string> = {
+  D: 'Deva',
+  M: 'Maanava',
+  R: 'Rakshasa'
+};
+
+export const NAADIS: Record<string, string> = {
+  Ad: 'Aadi',
+  Md: 'Madhya',
+  An: 'Antya'
 };

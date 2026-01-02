@@ -4,3 +4,11 @@
   gap: var(--spacing);
   margin-bottom: var(--spacing);
 }
+
+.matchScoreTable {
+  margin-top: var(--spacing);
+
+  td:first-child {
+    font-weight: bold;
+  }
+}

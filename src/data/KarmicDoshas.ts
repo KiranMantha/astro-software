@@ -110,12 +110,36 @@ export const KarmicDoshas: Record<string, { nakshatra: string; indications: stri
 };
 
 export const KarmicPlanets = {
-  Sun: ['Ashv', 'Asre', 'Anu', 'PBha'],
-  Moon: ['Bhar', 'Magh', 'Jye', 'UBha'],
-  Mars: ['Krit', 'PPhai', 'Mool', 'Reva'],
-  Mercury: ['Rohi', 'UPha', 'PSha'],
-  Jupiter: ['Mrig', 'Hast', 'USha'],
-  Venus: ['Ardr', 'Chit', 'Srav'],
-  Saturn: ['Puna', 'Swat', 'Dhan'],
-  Rahu: ['Push', 'Vish', 'Sata']
+  Sun: {
+    stars: ['Ashv', 'Asre', 'Anu', 'PBha'],
+    result: ``
+  },
+  Moon: {
+    stars: ['Bhar', 'Magh', 'Jye', 'UBha'],
+    result: ``
+  },
+  Mars: {
+    stars: ['Krit', 'PPha', 'Mool', 'Reva'],
+    result: ``
+  },
+  Mercury: {
+    stars: ['Rohi', 'UPha', 'PSha'],
+    result: ``
+  },
+  Jupiter: {
+    stars: ['Mrig', 'Hast', 'USha'],
+    result: ``
+  },
+  Venus: {
+    stars: ['Ardr', 'Chit', 'Srav'],
+    result: ``
+  },
+  Saturn: {
+    stars: ['Puna', 'Swat', 'Dhan'],
+    result: ``
+  },
+  Rahu: {
+    stars: ['Push', 'Vish', 'Sata'],
+    result: ``
+  }
 };
