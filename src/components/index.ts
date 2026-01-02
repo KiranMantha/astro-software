@@ -1,3 +1,4 @@
 export * from './astroParseTable';
-export * from './ui';
+export * from './matchMaking';
 export * from './nakshatraPada';
+export * from './ui';

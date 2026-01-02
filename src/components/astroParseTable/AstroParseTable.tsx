@@ -1,10 +1,11 @@
 import { useRef, useState } from 'preact/hooks';
-import { NAKSHATRA_ALIAS_MAP, NAKSHATRA_FULL_NAMES, NAVAMSA_COMBINATION, RASI_FULL_NAMES } from '../../data/constants';
-import styles from './AstroParseTable.module.scss';
+import { NAVAMSA_COMBINATION } from '../../data/constants';
+import { KarmicDoshas } from '../../data/KarmicDoshas';
 import { NakshatraPadaData } from '../../data/NakshatraPada.data';
+import { parseAstroText } from '../../helpers';
 import type { NakshatraData, NakshatraPadas } from '../../models';
 import type { AstroRowData } from './AstroParseTable.model';
-import { KarmicDoshas, KarmicNakshatras, KarmicPlanets } from '../../data/KarmicDoshas';
+import styles from './AstroParseTable.module.scss';
 
 const planets = [
   { name: 'As' },
@@ -36,44 +37,8 @@ export function AstroParseTable() {
   const planetMatrixRef = useRef<Record<string, number>>({});
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  const parseAstroText = (text: string) => {
-    const parsedRows = text
-      .trim()
-      .split('\n')
-      .filter(Boolean)
-      .slice(1)
-      .map((line) => {
-        const parts = line.trim().split(/\s+/);
-
-        const body = parts.slice(0, parts.length - 5).join(' ');
-        const longitude = parts.slice(parts.length - 5, parts.length - 4).join(' ');
-        let nakshatra = parts.slice(parts.length - 4, parts.length - 3).join(' ');
-        const pada = parts.slice(parts.length - 3, parts.length - 2).join(' ');
-        const rasi = parts.slice(parts.length - 2, parts.length - 1).join(' ');
-        const navamsa = parts.slice(parts.length - 1).join(' ');
-
-        nakshatra = NAKSHATRA_ALIAS_MAP[nakshatra] ?? nakshatra;
-
-        let karmicPlanet = '';
-
-        Object.entries(KarmicPlanets).forEach(([key, value]) => {
-          if (value.includes(nakshatra)) karmicPlanet = key;
-        });
-
-        return {
-          body,
-          longitude,
-          nakshatraCode: nakshatra,
-          nakshatra: NAKSHATRA_FULL_NAMES[nakshatra as keyof typeof NAKSHATRA_FULL_NAMES],
-          pada,
-          rasi: RASI_FULL_NAMES[rasi as keyof typeof RASI_FULL_NAMES],
-          rasiCode: rasi,
-          navamsa: RASI_FULL_NAMES[navamsa as keyof typeof RASI_FULL_NAMES],
-          navamsaCode: navamsa,
-          hasKarmicDosha: KarmicNakshatras[rasi as keyof typeof KarmicNakshatras].includes(nakshatra),
-          karmicPlanet
-        };
-      });
+  const handleSubmit = () => {
+    const parsedRows = parseAstroText(input);
     planetMatrixRef.current = {};
     parsedRows.forEach((item) => {
       let planetName = item.body.trim().split(' ')[0];
@@ -104,12 +69,7 @@ export function AstroParseTable() {
         planetMatrixRef.current[planetName] = navamsaNum;
       }
     });
-
-    return parsedRows;
-  };
-
-  const handleSubmit = () => {
-    setRows(parseAstroText(input));
+    setRows(parsedRows);
   };
 
   const handleCellHover = (rowIndex: number, colIndex: number) => {
@@ -159,7 +119,7 @@ export function AstroParseTable() {
         className={styles.formControl}
       />
 
-      <div className={styles.actions}>
+      <div className={`text-center ${styles.actions}`}>
         <button onClick={handleSubmit}>Generate Table</button>
       </div>
 

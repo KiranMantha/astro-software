@@ -1,6 +1,6 @@
-import { AstroParseTable, Tabs, NakshatraPada } from './components';
-import { selectedView, Views } from './signals';
 import { useLiveSignal } from '@preact/signals/utils';
+import { AstroParseTable, MatchMaking, NakshatraPada, Tabs } from './components';
+import { selectedView, Views } from './signals';
 
 export function App() {
   const view = useLiveSignal(selectedView);
@@ -14,6 +14,11 @@ export function App() {
       title: 'Nakshatra Pada',
       value: Views.NAKSHATRA_PADA,
       content: <NakshatraPada />
+    },
+    {
+      title: 'Match Making',
+      value: Views.MATCH_MAKING,
+      content: <MatchMaking />
     }
   ];
 

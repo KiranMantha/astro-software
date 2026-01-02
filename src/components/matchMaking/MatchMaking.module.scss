@@ -1,0 +1,6 @@
+.coupleHora {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing);
+  margin-bottom: var(--spacing);
+}
