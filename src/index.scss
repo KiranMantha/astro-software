@@ -49,6 +49,24 @@
   --icon-chevron: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='rgba(65, 84, 98, 0.999)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
 }
 
+@media print {
+  @page {
+    size: portrait;
+  }
+
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    min-height: auto;
+    background: #fff !important;
+
+    & > *:not(.print-content),
+    & .print-content .no-print {
+      display: none;
+    }
+  }
+}
+
 *,
 ::before,
 ::after {
@@ -71,6 +89,7 @@ html {
 
 body {
   background: var(--gray-150);
+  // background: var(--white);
 }
 
 #app {
@@ -93,7 +112,6 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  /* Inherits light bg/color from :root */
 }
 
 h1 {
@@ -112,4 +130,8 @@ textarea {
 
 .text-center {
   text-align: center;
+}
+
+.hide {
+  display: none;
 }

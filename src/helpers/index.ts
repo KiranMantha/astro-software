@@ -22,6 +22,32 @@ import {
   YoniMatrix
 } from '../data/MatchMaking.data';
 
+export function print(target: string, heading?: string) {
+  const printContent = document.querySelector('.print-content');
+  printContent && printContent.remove();
+
+  const printContainer = document.createElement('div');
+  printContainer.classList.add('print-content');
+
+  if (heading) {
+    const header = document.createElement('h1');
+    header.textContent = heading;
+    printContainer.appendChild(header);
+  }
+
+  const clonedTarget = (document.getElementById(target) as HTMLElement).cloneNode(true);
+  printContainer.appendChild(clonedTarget);
+
+  document.body.appendChild(printContainer);
+
+  window.print();
+
+  window.onafterprint = () => {
+    document.body.removeChild(printContainer);
+    window.onafterprint = null;
+  };
+}
+
 export const parseAstroText = (text: string) => {
   const parsedRows = text
     .trim()
@@ -83,7 +109,8 @@ export const getMaitriByNakshatraAndPada = (nakshatraCode: string, pada: string)
 };
 
 export const getMatchScores = (brideMaitri: string[], groomMaitri: string[]) => {
-  const scores: Array<{ bride: string; groom: string; score: number }> = [];
+  const scores: Array<{ bride: string; groom: string; score: number; scoreWithExceptions: number; remarks: string }> =
+    [];
 
   const getScoreByIndex = (index: number, brideItem: string, groomItem: string) => {
     switch (index) {
@@ -91,14 +118,18 @@ export const getMatchScores = (brideMaitri: string[], groomMaitri: string[]) => 
         return {
           bride: VARNAS[brideItem],
           groom: VARNAS[groomItem],
-          score: VarnaMatrix[brideItem][groomItem]
+          score: VarnaMatrix[brideItem][groomItem],
+          scoreWithExceptions: VarnaMatrix[brideItem][groomItem],
+          remarks: ''
         };
       }
       case 1: {
         return {
           bride: VASYAS[brideItem],
           groom: VASYAS[groomItem],
-          score: VasyaMatrix[brideItem][groomItem]
+          score: VasyaMatrix[brideItem][groomItem],
+          scoreWithExceptions: VasyaMatrix[brideItem][groomItem],
+          remarks: ''
         };
       }
       case 2: {
@@ -117,35 +148,45 @@ export const getMatchScores = (brideMaitri: string[], groomMaitri: string[]) => 
         return {
           bride: NAKSHATRA_FULL_NAMES[brideItem],
           groom: NAKSHATRA_FULL_NAMES[groomItem],
-          score
+          score,
+          scoreWithExceptions: score,
+          remarks: ''
         };
       }
       case 3: {
         return {
           bride: brideItem,
           groom: groomItem,
-          score: YoniMatrix[brideItem][groomItem]
+          score: YoniMatrix[brideItem][groomItem],
+          scoreWithExceptions: YoniMatrix[brideItem][groomItem],
+          remarks: ''
         };
       }
       case 4: {
         return {
           bride: PLANET_FULL_NAMES[brideItem],
           groom: PLANET_FULL_NAMES[groomItem],
-          score: GrahaMatrix[brideItem][groomItem]
+          score: GrahaMatrix[brideItem][groomItem],
+          scoreWithExceptions: GrahaMatrix[brideItem][groomItem],
+          remarks: ''
         };
       }
       case 5: {
         return {
           bride: GANAS[brideItem],
           groom: GANAS[groomItem],
-          score: GanaMatrix[brideItem][groomItem]
+          score: GanaMatrix[brideItem][groomItem],
+          scoreWithExceptions: GanaMatrix[brideItem][groomItem],
+          remarks: ''
         };
       }
       case 6: {
         return {
           bride: RASI_FULL_NAMES[brideItem],
           groom: RASI_FULL_NAMES[groomItem],
-          score: RaasiMatrix[brideItem][groomItem]
+          score: RaasiMatrix[brideItem][groomItem],
+          scoreWithExceptions: RaasiMatrix[brideItem][groomItem],
+          remarks: ''
         };
       }
       case 7: {
@@ -163,6 +204,7 @@ export const getMatchScores = (brideMaitri: string[], groomMaitri: string[]) => 
           bride: NAADIS[brideItem],
           groom: NAADIS[groomItem],
           score,
+          scoreWithExceptions: score ? score : naadiRemarks ? 0 : 8,
           remarks: naadiRemarks
         };
       }
@@ -170,7 +212,9 @@ export const getMatchScores = (brideMaitri: string[], groomMaitri: string[]) => 
         return {
           bride: brideItem,
           groom: groomItem,
-          score: 0
+          score: 0,
+          scoreWithExceptions: 0,
+          remarks: ''
         };
       }
     }

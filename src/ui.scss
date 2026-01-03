@@ -58,6 +58,14 @@ table {
   border-collapse: separate;
   border-left: 1px solid var(--border-color);
 
+  caption {
+    margin-bottom: var(--spacing);
+    padding-bottom: calc(var(--spacing) * 0.5);
+    border-bottom: 1px solid var(--border-color);
+    text-align: left;
+    font-weight: bold;
+  }
+
   tr td,
   tr th {
     padding: calc(var(--spacing) / 2) var(--spacing);

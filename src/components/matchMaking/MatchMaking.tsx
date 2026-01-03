@@ -1,12 +1,14 @@
 import { useState } from 'preact/hooks';
-import { MAX_MATCHING_SCORES } from '../../data/constants';
-import { getMaitriByNakshatraAndPada, getMatchScores, parseAstroText } from '../../helpers';
+import { ASTA_KOOTAMI } from '../../data/constants';
+import { getMaitriByNakshatraAndPada, getMatchScores, parseAstroText, print } from '../../helpers';
 import styles from './MatchMaking.module.scss';
 
 export const MatchMaking = () => {
   const [brideData, setBrideData] = useState('');
   const [groomData, setGroomData] = useState('');
-  const [scores, setScores] = useState<Array<{ bride: string; groom: string; score: number; remarks?: string }>>([]);
+  const [scores, setScores] = useState<
+    Array<{ bride: string; groom: string; score: number; scoreWithExceptions: number; remarks?: string }>
+  >([]);
 
   const handleSubmit = () => {
     const parsedBrideData = parseAstroText(brideData);
@@ -48,44 +50,52 @@ export const MatchMaking = () => {
         <button onClick={handleSubmit}>Explore Match</button>
       </div>
       {scores.length ? (
-        <table className={styles.matchScoreTable}>
-          <thead>
-            <tr>
-              <th>Type</th>
-              <th>Subject</th>
-              <th>Bride</th>
-              <th>Groom</th>
-              <th>Max Score</th>
-              <th>Score</th>
-              <th>Score With Exception</th>
-              <th>Remarks</th>
-            </tr>
-          </thead>
-          <tbody>
-            {MAX_MATCHING_SCORES.map((header, index) => {
-              return (
+        <>
+          <div className="hide">
+            <button onClick={() => print('match-container')}>Print</button>
+          </div>
+          <div id="match-container">
+            <table className={styles.astaKootamiScoreTable}>
+              <caption>Asta Kootami Score</caption>
+              <thead>
                 <tr>
-                  <td>{header.name}</td>
-                  <td>{header.subject}</td>
-                  <td>{scores[index].bride}</td>
-                  <td>{scores[index].groom}</td>
-                  <td>{header.maxScore}</td>
-                  <td>{scores[index].score}</td>
-                  <td></td>
-                  <td>{scores[index].remarks}</td>
+                  <th>Type</th>
+                  <th>Subject</th>
+                  <th>Bride</th>
+                  <th>Groom</th>
+                  <th>Max Score</th>
+                  <th>Score</th>
+                  <th>Score With Exception</th>
+                  <th>Remarks</th>
                 </tr>
-              );
-            })}
-          </tbody>
-          <tfoot>
-            <tr>
-              <td colspan={4}>Total Score</td>
-              <td>{MAX_MATCHING_SCORES.reduce((sum, item) => sum + item.maxScore, 0)}</td>
-              <td>{scores.reduce((sum, item) => sum + (item.score || 0), 0)}</td>
-              <td colspan={2}></td>
-            </tr>
-          </tfoot>
-        </table>
+              </thead>
+              <tbody>
+                {ASTA_KOOTAMI.map((header, index) => {
+                  return (
+                    <tr>
+                      <td>{header.name}</td>
+                      <td>{header.subject}</td>
+                      <td>{scores[index].bride}</td>
+                      <td>{scores[index].groom}</td>
+                      <td>{header.maxScore}</td>
+                      <td>{scores[index].score}</td>
+                      <td>{scores[index].scoreWithExceptions}</td>
+                      <td>{scores[index].remarks}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan={4}>Total Score</td>
+                  <td>{ASTA_KOOTAMI.reduce((sum, item) => sum + item.maxScore, 0)}</td>
+                  <td>{scores.reduce((sum, item) => sum + (item.score || 0), 0)}</td>
+                  <td colspan={2}></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </>
       ) : null}
     </div>
   );

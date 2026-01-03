@@ -5,8 +5,8 @@
   margin-bottom: var(--spacing);
 }
 
-.matchScoreTable {
-  margin-top: var(--spacing);
+.astaKootamiScoreTable {
+  margin-top: calc(var(--spacing) * 1.5);
 
   td:first-child {
     font-weight: bold;

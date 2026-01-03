@@ -176,7 +176,7 @@ export const NAVAMSA_COMBINATION: Record<string, number> = {
   'Pi,Pi': 108
 };
 
-export const MAX_MATCHING_SCORES = [
+export const ASTA_KOOTAMI = [
   {
     name: 'Varna',
     subject: 'Inclination',
