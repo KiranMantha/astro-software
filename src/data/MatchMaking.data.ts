@@ -635,3 +635,18 @@ export const NonMatchingStars = {
   Dhan: ['Mrig', 'Chit'],
   Chit: ['Mrig', 'Dhan']
 };
+
+export const NaadiNakshatraExceptions: Record<string, { affectedStars: string[]; remarks: string }> = {
+  Ad: {
+    affectedStars: ['Hast', 'Jye'],
+    remarks: 'మానవ మేధో సంపత్తి, ప్రతీకార వాంఛ, ఆలోచన విధానం, కోపం, ఆవేశం, రణత్వం తెలుపుతుంది'
+  },
+  Md: {
+    affectedStars: ['Bhar', 'UBha'],
+    remarks: 'శరీర మధ్య భాగం లో రుగ్మతలు, సంతానం, ఊపిరితిత్తులు, గుండెల్లో ఉన్న రుగ్మతలు'
+  },
+  An: {
+    affectedStars: ['Swat', 'Reva'],
+    remarks: 'మర్మావయాలు, కామవాంచ, నపుంసకత్వం, శరీర ఉష్ణోగ్రత'
+  }
+};

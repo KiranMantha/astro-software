@@ -14,6 +14,7 @@ import {
   GrahaMatrix,
   MaitriMatrix,
   NaadiMatrix,
+  NaadiNakshatraExceptions,
   RaasiMatrix,
   TaraMatrix,
   VarnaMatrix,
@@ -148,10 +149,21 @@ export const getMatchScores = (brideMaitri: string[], groomMaitri: string[]) => 
         };
       }
       case 7: {
+        const score = NaadiMatrix[brideItem][groomItem];
+        let naadiRemarks = '';
+        if (score === 0) {
+          const { affectedStars, remarks } = NaadiNakshatraExceptions[brideItem];
+          const brideStar = brideMaitri[2];
+          const groomStar = groomMaitri[2];
+          if (affectedStars.includes(brideStar) && affectedStars.includes(groomStar)) {
+            naadiRemarks = remarks;
+          }
+        }
         return {
           bride: NAADIS[brideItem],
           groom: NAADIS[groomItem],
-          score: NaadiMatrix[brideItem][groomItem]
+          score,
+          remarks: naadiRemarks
         };
       }
       default: {
@@ -163,6 +175,7 @@ export const getMatchScores = (brideMaitri: string[], groomMaitri: string[]) => 
       }
     }
   };
+
   brideMaitri.forEach((item, index) => {
     scores.push(getScoreByIndex(index, item, groomMaitri[index]));
   });

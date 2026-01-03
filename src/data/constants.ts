@@ -179,34 +179,42 @@ export const NAVAMSA_COMBINATION: Record<string, number> = {
 export const MAX_MATCHING_SCORES = [
   {
     name: 'Varna',
+    subject: 'Inclination',
     maxScore: 1
   },
   {
     name: 'Vaysa',
+    subject: 'Harmony',
     maxScore: 2
   },
   {
     name: 'Tara',
+    subject: 'Fortune',
     maxScore: 3
   },
   {
     name: 'Yoni',
+    subject: 'Attachment',
     maxScore: 4
   },
   {
     name: 'Graha Maitri',
+    subject: 'Co-operation',
     maxScore: 5
   },
   {
     name: 'Gana',
+    subject: 'Relationship',
     maxScore: 6
   },
   {
     name: 'Bhakoot',
+    subject: 'Happiness',
     maxScore: 7
   },
   {
     name: 'Naadi',
+    subject: 'Stability',
     maxScore: 8
   }
 ];

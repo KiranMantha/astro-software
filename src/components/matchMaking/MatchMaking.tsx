@@ -6,7 +6,7 @@ import styles from './MatchMaking.module.scss';
 export const MatchMaking = () => {
   const [brideData, setBrideData] = useState('');
   const [groomData, setGroomData] = useState('');
-  const [scores, setScores] = useState<Array<{ bride: string; groom: string; score: number }>>([]);
+  const [scores, setScores] = useState<Array<{ bride: string; groom: string; score: number; remarks?: string }>>([]);
 
   const handleSubmit = () => {
     const parsedBrideData = parseAstroText(brideData);
@@ -52,6 +52,7 @@ export const MatchMaking = () => {
           <thead>
             <tr>
               <th>Type</th>
+              <th>Subject</th>
               <th>Bride</th>
               <th>Groom</th>
               <th>Max Score</th>
@@ -65,19 +66,20 @@ export const MatchMaking = () => {
               return (
                 <tr>
                   <td>{header.name}</td>
+                  <td>{header.subject}</td>
                   <td>{scores[index].bride}</td>
                   <td>{scores[index].groom}</td>
                   <td>{header.maxScore}</td>
                   <td>{scores[index].score}</td>
                   <td></td>
-                  <td></td>
+                  <td>{scores[index].remarks}</td>
                 </tr>
               );
             })}
           </tbody>
           <tfoot>
             <tr>
-              <td colspan={3} style="text-align: right;">
+              <td colspan={4} style="text-align: right;">
                 Total Score
               </td>
               <td>{MAX_MATCHING_SCORES.reduce((sum, item) => sum + item.maxScore, 0)}</td>
