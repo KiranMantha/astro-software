@@ -11,6 +11,16 @@
     white-space: nowrap;
   }
 
+  tbody {
+    tr:nth-child(1),
+    tr:nth-child(2),
+    tr:nth-child(3) {
+      td:last-child {
+        background-color: #fafad2;
+      }
+    }
+  }
+
   td {
     button {
       margin-left: 5px;
