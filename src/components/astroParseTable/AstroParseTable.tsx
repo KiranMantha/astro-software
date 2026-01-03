@@ -33,9 +33,11 @@ export function AstroParseTable() {
   const [selectedPlanetDetails, setSelectedPlanetDetails] = useState<
     ((typeof KarmicDoshas)[string] & { rasi: string }) | null
   >(null);
+  const [karmicPlanetResults, setKarmicPlanetResults] = useState('');
 
   const planetMatrixRef = useRef<Record<string, number>>({});
-  const dialogRef = useRef<HTMLDialogElement>(null);
+  const karmicDoshaDialogRef = useRef<HTMLDialogElement>(null);
+  const karmicPlanetResultsDialogRef = useRef<HTMLDialogElement>(null);
 
   const handleSubmit = () => {
     const parsedRows = parseAstroText(input);
@@ -105,7 +107,12 @@ export function AstroParseTable() {
 
   const handleViewKarmicDosha = (nakshatraCode: string, rasi: string) => {
     setSelectedPlanetDetails({ ...KarmicDoshas[nakshatraCode], rasi });
-    dialogRef.current?.showModal();
+    karmicDoshaDialogRef.current?.showModal();
+  };
+
+  const handleViewKarmicPlanetResults = (karmicPlanetResults: string) => {
+    setKarmicPlanetResults(karmicPlanetResults);
+    karmicPlanetResultsDialogRef.current?.showModal();
   };
 
   return (
@@ -180,7 +187,12 @@ export function AstroParseTable() {
                           'No'
                         )}
                       </td>
-                      <td>{row.karmicPlanet}</td>
+                      <td>
+                        {row.karmicPlanet}
+                        <button data-size="sm" onClick={() => handleViewKarmicPlanetResults(row.karmicPlanetResults)}>
+                          View
+                        </button>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -236,7 +248,7 @@ export function AstroParseTable() {
         </>
       ) : null}
 
-      <dialog ref={dialogRef} className={styles.karmicDoshaDialog}>
+      <dialog ref={karmicDoshaDialogRef} className={styles.karmicDoshaDialog}>
         <table>
           <tbody>
             <tr>
@@ -255,8 +267,15 @@ export function AstroParseTable() {
             </tr>
           </tbody>
         </table>
-        <div>
-          <button onClick={() => dialogRef.current?.close()}>Close</button>
+        <div className="text-center">
+          <button onClick={() => karmicDoshaDialogRef.current?.close()}>Close</button>
+        </div>
+      </dialog>
+
+      <dialog ref={karmicPlanetResultsDialogRef}>
+        <div dangerouslySetInnerHTML={{ __html: karmicPlanetResults }}></div>
+        <div className="text-center">
+          <button onClick={() => karmicPlanetResultsDialogRef.current?.close()}>Close</button>
         </div>
       </dialog>
     </div>

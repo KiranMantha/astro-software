@@ -10,4 +10,5 @@ export type AstroRowData = {
   navamsaCode: string;
   hasKarmicDosha: boolean;
   karmicPlanet: string;
+  karmicPlanetResults: string;
 };

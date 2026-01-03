@@ -6,9 +6,15 @@
   margin-bottom: 20px;
 }
 
-.planetDetails td {
-  button {
-    margin-left: 5px;
+.planetDetails {
+  th:last-child {
+    white-space: nowrap;
+  }
+
+  td {
+    button {
+      margin-left: 5px;
+    }
   }
 }
 
