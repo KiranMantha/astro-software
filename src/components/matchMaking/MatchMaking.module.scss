@@ -11,4 +11,10 @@
   td:first-child {
     font-weight: bold;
   }
+
+  tfoot {
+    td:first-child {
+      text-align: right;
+    }
+  }
 }

@@ -79,13 +79,10 @@ export const MatchMaking = () => {
           </tbody>
           <tfoot>
             <tr>
-              <td colspan={4} style="text-align: right;">
-                Total Score
-              </td>
+              <td colspan={4}>Total Score</td>
               <td>{MAX_MATCHING_SCORES.reduce((sum, item) => sum + item.maxScore, 0)}</td>
               <td>{scores.reduce((sum, item) => sum + (item.score || 0), 0)}</td>
-              <td></td>
-              <td></td>
+              <td colspan={2}></td>
             </tr>
           </tfoot>
         </table>
