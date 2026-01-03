@@ -3,6 +3,7 @@ import {
   NAADIS,
   NAKSHATRA_ALIAS_MAP,
   NAKSHATRA_FULL_NAMES,
+  PLANET_FULL_NAMES,
   RASI_FULL_NAMES,
   VARNAS,
   VASYAS
@@ -127,8 +128,8 @@ export const getMatchScores = (brideMaitri: string[], groomMaitri: string[]) => 
       }
       case 4: {
         return {
-          bride: brideItem,
-          groom: groomItem,
+          bride: PLANET_FULL_NAMES[brideItem],
+          groom: PLANET_FULL_NAMES[groomItem],
           score: GrahaMatrix[brideItem][groomItem]
         };
       }

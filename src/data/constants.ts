@@ -51,15 +51,15 @@ export const RASI_FULL_NAMES: Record<string, string> = {
 };
 
 export const PLANET_FULL_NAMES: Record<string, string> = {
-  Sun: 'Sun, Surya',
-  Moon: 'Moon, Chandra',
+  Sun: 'Sun (Surya)',
+  Moon: 'Moon (Chandra)',
   Rah: 'Rahu',
-  Jup: 'Jupiter, Guru',
-  Sat: 'Saturn, Sani',
-  Merc: 'Mercury, Budha',
+  Jup: 'Jupiter (Guru)',
+  Sat: 'Saturn (Shani)',
+  Merc: 'Mercury (Budha)',
   Ket: 'Ketu',
-  Ven: 'Venus, Sukra',
-  Mars: 'Mars, Kuja',
+  Ven: 'Venus (Sukra)',
+  Mars: 'Mars (Kuja)',
   Uranus: 'Uranus',
   Neptune: 'Neptune',
   Pluto: 'Pluto'
