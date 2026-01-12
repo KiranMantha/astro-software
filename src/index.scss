@@ -6,7 +6,7 @@
   color-scheme: light; /* Keeps browser rendering in light mode */
 
   /* Force light colors/backgrounds globally */
-  color: #213547;
+  color: #111827;
   background-color: #ffffff;
 
   font-synthesis: none;
@@ -15,6 +15,7 @@
   -moz-osx-font-smoothing: grayscale;
   --black: #000000;
   --white: #ffffff;
+  --base-color: #111827;
   --theme: #007bff; //#646cff;
   --gray-25: #fcfcfd;
   --gray-50: #f9fafb;

@@ -7,6 +7,9 @@
     button {
       padding: 12px 20px;
       border-radius: 25px;
+      background-color: var(--gray-150);
+      border-color: var(--border-color);
+      color: var(--base-color);
 
       &.active {
         background: var(--theme); /* Blue background for active */
