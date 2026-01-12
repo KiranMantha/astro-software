@@ -52,6 +52,12 @@ button {
     padding: calc(var(--spacing) * 0.25) calc(var(--spacing) * 0.5);
     font-size: small;
   }
+
+  &[data-variant='outline'] {
+    background-color: var(--gray-150);
+    border-color: var(--border-color);
+    color: var(--base-color);
+  }
 }
 
 table {

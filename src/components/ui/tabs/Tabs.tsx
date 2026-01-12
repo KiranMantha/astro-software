@@ -1,6 +1,6 @@
 import { useState } from 'preact/hooks';
-import styles from './Tabs.module.scss';
 import type { TabProps } from './Tabs.model';
+import styles from './Tabs.module.scss';
 
 export const Tabs = ({ tabs, defaultTab }: TabProps) => {
   const [activeTab, setActiveTab] = useState(defaultTab);
@@ -10,6 +10,7 @@ export const Tabs = ({ tabs, defaultTab }: TabProps) => {
       <div className={styles.tabHeaders}>
         {tabs.map((tab, index) => (
           <button
+            data-variant="outline"
             key={index}
             className={activeTab === tab.value ? styles.active : ''}
             onClick={() => setActiveTab(tab.value)}
