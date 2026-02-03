@@ -39,9 +39,13 @@
     width: 1000px;
     border-top: 1px solid var(--border-color);
 
-    td:first-child {
-      font-weight: bold;
-      white-space: nowrap;
+    td {
+      text-align: left;
+
+      &:first-child {
+        font-weight: bold;
+        white-space: nowrap;
+      }
     }
   }
 
