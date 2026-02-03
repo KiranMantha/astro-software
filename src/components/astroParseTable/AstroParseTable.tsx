@@ -249,24 +249,26 @@ export function AstroParseTable() {
       ) : null}
 
       <dialog ref={karmicDoshaDialogRef} className={styles.karmicDoshaDialog}>
-        <table>
-          <tbody>
-            <tr>
-              <td>Rasi, Nakshatra</td>
-              <td>
-                {selectedPlanetDetails?.rasi}, {selectedPlanetDetails?.nakshatra}
-              </td>
-            </tr>
-            <tr>
-              <td>Indications</td>
-              <td>{selectedPlanetDetails?.indications}</td>
-            </tr>
-            <tr>
-              <td>Remidies</td>
-              <td>{selectedPlanetDetails?.remidies}</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="table-responsive">
+          <table>
+            <tbody>
+              <tr>
+                <td>Rasi, Nakshatra</td>
+                <td>
+                  {selectedPlanetDetails?.rasi}, {selectedPlanetDetails?.nakshatra}
+                </td>
+              </tr>
+              <tr>
+                <td>Indications</td>
+                <td>{selectedPlanetDetails?.indications}</td>
+              </tr>
+              <tr>
+                <td>Remidies</td>
+                <td>{selectedPlanetDetails?.remidies}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <div className="text-center">
           <button onClick={() => karmicDoshaDialogRef.current?.close()}>Close</button>
         </div>
