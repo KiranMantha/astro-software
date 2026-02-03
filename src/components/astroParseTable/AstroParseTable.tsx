@@ -136,7 +136,7 @@ export function AstroParseTable() {
             <summary>
               <strong>Planet Details</strong>
             </summary>
-            <div>
+            <div class="table-responsive">
               <table className={styles.planetDetails}>
                 <thead>
                   <tr>
@@ -204,7 +204,7 @@ export function AstroParseTable() {
             <summary>
               <strong>Navamsa Matrix</strong>
             </summary>
-            <div>
+            <div class="table-responsive">
               <table className={styles.matrixTable}>
                 <thead>
                   <tr>

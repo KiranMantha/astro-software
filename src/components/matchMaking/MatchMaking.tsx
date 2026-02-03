@@ -54,7 +54,7 @@ export const MatchMaking = () => {
           <div className="hide">
             <button onClick={() => print('match-container')}>Print</button>
           </div>
-          <div id="match-container">
+          <div id="match-container" class="table-responsive">
             <table className={styles.astaKootamiScoreTable}>
               <caption>Asta Kootami Score</caption>
               <thead>

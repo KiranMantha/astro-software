@@ -136,3 +136,8 @@ textarea {
 .hide {
   display: none;
 }
+
+.table-responsive {
+  max-width: 100%;
+  overflow: auto;
+}
