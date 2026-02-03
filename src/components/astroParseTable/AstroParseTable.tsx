@@ -1,11 +1,13 @@
 import { useRef, useState } from 'preact/hooks';
-import { NAVAMSA_COMBINATION } from '../../data/constants';
+import { NAVAMSA_COMBINATION, RASI_FULL_NAMES } from '../../data/constants';
 import { KarmicDoshas } from '../../data/KarmicDoshas';
 import { NakshatraPadaData } from '../../data/NakshatraPada.data';
 import { parseAstroText } from '../../helpers';
 import type { NakshatraData, NakshatraPadas } from '../../models';
 import type { AstroRowData } from './AstroParseTable.model';
 import styles from './AstroParseTable.module.scss';
+
+const rasis = Object.keys(RASI_FULL_NAMES);
 
 const planets = [
   { name: 'As' },
@@ -24,6 +26,25 @@ const planets = [
   { name: 'Maandi' },
   { name: 'Bhrigu Bindu' }
 ];
+
+const getRasiDistances = (rasiA: string, rasiB: string) => {
+  const idxA = rasis.findIndex((r) => r === rasiA);
+  const idxB = rasis.findIndex((r) => r === rasiB);
+
+  // Add 1 after finding index to get 1-based position (standard in astrology)
+  const rasiAPosition = idxA + 1;
+  const rasiBPosition = idxB + 1;
+
+  // Forward inclusive distance: ((posB - posA + 12) % 12) + 1
+  const forward = ((rasiBPosition - rasiAPosition + 12) % 12) + 1;
+
+  // Backward inclusive distance: ((posA - posB + 12) % 12) + 1
+  const backward = ((rasiAPosition - rasiBPosition + 12) % 12) + 1;
+
+  const isVargottam = forward === 1 && backward === 1;
+
+  return `${forward},${backward} ${isVargottam ? ' (Vargottam)' : ''}`;
+};
 
 export function AstroParseTable() {
   const [input, setInput] = useState('');
@@ -146,6 +167,7 @@ export function AstroParseTable() {
                     <th>Pada</th>
                     <th>Rasi (D1)</th>
                     <th>Navamsa (D9)</th>
+                    <th>Rasi Combination</th>
                     <th>Charecterstics</th>
                     <th>Career Path</th>
                     <th>Has Karmic Dosha</th>
@@ -161,6 +183,7 @@ export function AstroParseTable() {
                       <td>{row.pada}</td>
                       <td>{row.rasi}</td>
                       <td>{row.navamsa}</td>
+                      <td>{getRasiDistances(row.rasiCode, row.navamsaCode)}</td>
                       <td>
                         {
                           NakshatraPadaData[row.nakshatraCode as keyof NakshatraData][row.pada as keyof NakshatraPadas][
