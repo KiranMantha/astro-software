@@ -35,10 +35,7 @@ const getRasiDistances = (rasiA: string, rasiB: string) => {
   const rasiAPosition = idxA + 1;
   const rasiBPosition = idxB + 1;
 
-  // Forward inclusive distance: ((posB - posA + 12) % 12) + 1
   const forward = ((rasiBPosition - rasiAPosition + 12) % 12) + 1;
-
-  // Backward inclusive distance: ((posA - posB + 12) % 12) + 1
   const backward = ((rasiAPosition - rasiBPosition + 12) % 12) + 1;
 
   const isVargottam = forward === 1 && backward === 1;
