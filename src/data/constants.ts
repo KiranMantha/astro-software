@@ -2,7 +2,7 @@ export const NAKSHATRA_ALIAS_MAP: Record<string, string> = {
   Visa: 'Vish',
   Aswi: 'Ashv',
   Pubba: 'PPha',
-  Uttara: 'UPha'
+  Uttara: 'UPha',
 };
 
 export const NAKSHATRA_FULL_NAMES: Record<string, string> = {
@@ -32,7 +32,7 @@ export const NAKSHATRA_FULL_NAMES: Record<string, string> = {
   Sata: 'Satabhisha',
   PBha: 'Purva Bhadra',
   UBha: 'Uttara Bhadra',
-  Reva: 'Revati'
+  Reva: 'Revati',
 };
 
 export const RASI_FULL_NAMES: Record<string, string> = {
@@ -47,7 +47,7 @@ export const RASI_FULL_NAMES: Record<string, string> = {
   Sg: 'Sagittarius (Dhanassu)',
   Cp: 'Capricorn (Makaram)',
   Aq: 'Aquarius (Kumbham)',
-  Pi: 'Pisces (Meenam)'
+  Pi: 'Pisces (Meenam)',
 };
 
 export const PLANET_FULL_NAMES: Record<string, string> = {
@@ -62,7 +62,7 @@ export const PLANET_FULL_NAMES: Record<string, string> = {
   Mars: 'Mars (Kuja)',
   Uranus: 'Uranus',
   Neptune: 'Neptune',
-  Pluto: 'Pluto'
+  Pluto: 'Pluto',
 };
 
 export const NAVAMSA_COMBINATION: Record<string, number> = {
@@ -173,57 +173,57 @@ export const NAVAMSA_COMBINATION: Record<string, number> = {
   'Pi,Sg': 105,
   'Pi,Cp': 106,
   'Pi,Aq': 107,
-  'Pi,Pi': 108
+  'Pi,Pi': 108,
 };
 
 export const ASTA_KOOTAMI = [
   {
     name: 'Varna',
     subject: 'Inclination',
-    maxScore: 1
+    maxScore: 1,
   },
   {
     name: 'Vaysa',
     subject: 'Harmony',
-    maxScore: 2
+    maxScore: 2,
   },
   {
     name: 'Tara',
     subject: 'Fortune',
-    maxScore: 3
+    maxScore: 3,
   },
   {
     name: 'Yoni',
     subject: 'Attachment',
-    maxScore: 4
+    maxScore: 4,
   },
   {
     name: 'Graha Maitri',
     subject: 'Co-operation',
-    maxScore: 5
+    maxScore: 5,
   },
   {
     name: 'Gana',
     subject: 'Relationship',
-    maxScore: 6
+    maxScore: 6,
   },
   {
     name: 'Bhakoot',
     subject: 'Happiness',
-    maxScore: 7
+    maxScore: 7,
   },
   {
     name: 'Naadi',
     subject: 'Stability',
-    maxScore: 8
-  }
+    maxScore: 8,
+  },
 ];
 
 export const VARNAS: Record<string, string> = {
   B: 'Brahmin',
   K: 'Kshatriya',
   V: 'Vaysya',
-  S: 'Shudra'
+  S: 'Shudra',
 };
 
 export const VASYAS: Record<string, string> = {
@@ -231,17 +231,17 @@ export const VASYAS: Record<string, string> = {
   M: 'Maanava',
   J: 'Jalachara',
   V: 'Vanachara',
-  K: 'Keetaka'
+  K: 'Keetaka',
 };
 
 export const GANAS: Record<string, string> = {
   D: 'Deva',
   M: 'Maanava',
-  R: 'Rakshasa'
+  R: 'Rakshasa',
 };
 
 export const NAADIS: Record<string, string> = {
   Ad: 'Aadi',
   Md: 'Madhya',
-  An: 'Antya'
+  An: 'Antya',
 };

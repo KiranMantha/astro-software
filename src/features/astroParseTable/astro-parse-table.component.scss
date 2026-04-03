@@ -1,0 +1,61 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.formControl {
+  margin-bottom: 12px;
+}
+
+.actions {
+  margin-bottom: 20px;
+}
+
+.planetDetails {
+  th:last-child {
+    white-space: nowrap;
+  }
+
+  tbody {
+    tr:nth-child(1),
+    tr:nth-child(2),
+    tr:nth-child(3) {
+      td:last-child {
+        background-color: #fafad2;
+      }
+    }
+  }
+
+  td {
+    button {
+      margin-left: 5px;
+    }
+  }
+}
+
+.matrixTable {
+  tr td:first-child {
+    font-weight: bold;
+  }
+}
+
+.karmicDoshaDialog {
+  table {
+    width: 1000px;
+    border-top: 1px solid var(--border-color);
+
+    td {
+      text-align: left;
+
+      &:first-child {
+        font-weight: bold;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  div {
+    text-align: center;
+    margin-top: var(--spacing);
+  }
+}

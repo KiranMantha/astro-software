@@ -1,0 +1,71 @@
+<div class="match-making-container">
+  <div class="coupleHora">
+    <div class="input-group">
+      <textarea
+        rows="15"
+        [(ngModel)]="brideData"
+        placeholder="Paste Bride data here..."
+      ></textarea>
+    </div>
+    <div class="input-group">
+      <textarea
+        rows="15"
+        [(ngModel)]="groomData"
+        placeholder="Paste Groom data here..."
+      ></textarea>
+    </div>
+  </div>
+
+  <div class="text-center">
+    <button (click)="handleSubmit()">Explore Match</button>
+  </div>
+
+  @if (scores().length > 0) {
+  <div class="hide">
+    <button (click)="handlePrint('match-container')">Print Result</button>
+  </div>
+
+  <div id="match-container" class="table-responsive">
+    <table class="astaKootamiScoreTable">
+      <caption>
+        Asta Kootami Score
+      </caption>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Subject</th>
+          <th>Bride</th>
+          <th>Groom</th>
+          <th>Max Score</th>
+          <th>Score</th>
+          <th>With Exception</th>
+          <th>Remarks</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (header of ASTA_KOOTAMI; track $index) { @let scoreItem =
+        scores()[$index];
+        <tr>
+          <td>{{ header.name }}</td>
+          <td>{{ header.subject }}</td>
+          <td>{{ scoreItem.bride }}</td>
+          <td>{{ scoreItem.groom }}</td>
+          <td>{{ header.maxScore }}</td>
+          <td>{{ scoreItem.score }}</td>
+          <td>{{ scoreItem.scoreWithExceptions }}</td>
+          <td>{{ scoreItem.remarks }}</td>
+        </tr>
+        }
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4">Total Score</td>
+          <td>{{ totalMaxScore() }}</td>
+          <td>{{ totalCurrentScore() }}</td>
+          <td colspan="2"></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  }
+</div>
