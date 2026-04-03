@@ -1,0 +1,14 @@
+:host {
+  display: block;
+}
+
+.nakshatra-pada-form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: flex-end;
+  gap: var(--spacing);
+
+  button {
+    width: fit-content;
+  }
+}

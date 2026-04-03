@@ -1,0 +1,28 @@
+:host {
+  display: block;
+}
+
+.tabs {
+  .tab-headers {
+    display: flex;
+    gap: var(--spacing);
+    justify-content: center;
+
+    button {
+      padding: 12px 20px;
+      border-radius: 25px;
+      transition: all 0.2s ease;
+
+      &.active {
+        background: var(--theme);
+        border-color: var(--theme);
+        color: var(--white);
+      }
+    }
+  }
+
+  .tab-content {
+    padding: var(--spacing);
+    padding-top: calc(var(--spacing) * 1.5);
+  }
+}

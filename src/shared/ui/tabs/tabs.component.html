@@ -1,0 +1,17 @@
+<div class="tabs">
+  <div class="tab-headers">
+    @for (tab of tabs; track tab.value) {
+    <button
+      data-variant="outline"
+      [class.active]="activeTabValue === tab.value"
+      (click)="selectTab(tab.value)"
+    >
+      {{ tab.title }}
+    </button>
+    }
+  </div>
+
+  <div class="tab-content">
+    <ng-content></ng-content>
+  </div>
+</div>
