@@ -28,7 +28,11 @@
             "assets": [],
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "outputPath": "docs",
+            "outputPath": {
+              "base": "docs",
+              "browser": ""
+            },
+            "deleteOutputPath": true,
             "polyfills": [],
             "scripts": [],
             "styles": ["src/global_styles.scss"],
