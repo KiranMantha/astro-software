@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "deploy": "ng build --base-href /astro-software/",
-    "preview": "ng build && npx http-server docs/browser -p 8080 -o"
+    "preview": "ng build && npx http-server docs -p 8080 -o"
   },
   "dependencies": {
     "@angular/common": "^21.2.7",
