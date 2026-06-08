@@ -1,13 +1,8 @@
 <div class="select">
   <label class="label" [for]="inputId">{{ label }}</label>
-  <select
-    [id]="inputId"
-    [name]="fieldName"
-    [ngModel]="value"
-    (change)="onModelChange($event)"
-  >
+  <select [id]="inputId" [name]="fieldName" [ngModel]="value" (change)="onModelChange($event)">
     @for (opt of options; track opt.value) {
-    <option [value]="opt.value">{{ opt.label }}</option>
+      <option [value]="opt.value">{{ opt.label }}</option>
     }
   </select>
 </div>

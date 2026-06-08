@@ -1,16 +1,18 @@
 import { Component, signal } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { TabsComponent } from './shared/ui';
 import {
   AstroParseTableComponent,
   MatchMakingComponent,
   NakshatraPadaComponent,
+  NumerologyPyramidComponent
 } from './features';
+import { TabsComponent } from './shared/ui';
 
 enum Views {
   ASTRO_TABLE = 'ASTRO_TABLE',
   NAKSHATRA_PADA = 'NAKSHATRA_PADA',
   MATCH_MAKING = 'MATCH_MAKING',
+  NUMEROLOGY = 'NUMEROLOGY'
 }
 
 @Component({
@@ -21,14 +23,11 @@ enum Views {
     AstroParseTableComponent,
     MatchMakingComponent,
     NakshatraPadaComponent,
+    NumerologyPyramidComponent
   ],
   template: `
-    <main id='app'>
-      <app-tabs 
-        [tabs]="tabConfig" 
-        [activeTabValue]="selectedView()" 
-        (tabChange)="handleTabChange($event)"
-      >
+    <main id="app">
+      <app-tabs [tabs]="tabConfig" [activeTabValue]="selectedView()" (tabChange)="handleTabChange($event)">
         @switch (selectedView()) {
           @case (Views.ASTRO_TABLE) {
             <app-astro-parse-table />
@@ -39,10 +38,13 @@ enum Views {
           @case (Views.MATCH_MAKING) {
             <app-match-making />
           }
+          @case (Views.NUMEROLOGY) {
+            <app-numerology />
+          }
         }
       </app-tabs>
     </main>
-  `,
+  `
 })
 export class App {
   // Expose Views to the template
@@ -56,6 +58,7 @@ export class App {
     { title: 'Astro Table', value: Views.ASTRO_TABLE },
     { title: 'Nakshatra Pada', value: Views.NAKSHATRA_PADA },
     { title: 'Match Making', value: Views.MATCH_MAKING },
+    { title: 'Numerology', value: Views.NUMEROLOGY }
   ];
 
   handleTabChange(newValue: string) {

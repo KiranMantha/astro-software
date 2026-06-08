@@ -37,7 +37,7 @@ export const MaitriMatrix: Record<string, string[]> = {
   'PBha-1,2,3': ['S', 'M', 'PBha', 'SIMHAM', 'Sat', 'M', 'Aq', 'Ad'],
   'PBha-4': ['B', 'J', 'PBha', 'SIMHAM', 'Jup', 'M', 'Pi', 'Ad'],
   UBha: ['B', 'J', 'UBha', 'GOVU', 'Jup', 'M', 'Pi', 'Md'],
-  Reva: ['B', 'J', 'Reva', 'GAJAM', 'Jup', 'D', 'Pi', 'An'],
+  Reva: ['B', 'J', 'Reva', 'GAJAM', 'Jup', 'D', 'Pi', 'An']
 };
 
 /**
@@ -52,26 +52,26 @@ export const VarnaMatrix: Record<string, Record<string, number>> = {
     B: 1,
     K: 0,
     V: 0,
-    S: 0,
+    S: 0
   },
   K: {
     B: 1,
     K: 1,
     V: 0,
-    S: 0,
+    S: 0
   },
   V: {
     B: 1,
     K: 1,
     V: 1,
-    S: 0,
+    S: 0
   },
   S: {
     B: 1,
     K: 1,
     V: 1,
-    S: 1,
-  },
+    S: 1
+  }
 };
 
 /**
@@ -88,36 +88,36 @@ export const VasyaMatrix: Record<string, Record<string, number>> = {
     M: 1 / 2,
     J: 1,
     V: 0,
-    K: 2,
+    K: 2
   },
   M: {
     C: 1 / 2,
     M: 2,
     J: 0,
     V: 0,
-    K: 0,
+    K: 0
   },
   J: {
     C: 1,
     M: 0,
     J: 2,
     V: 2,
-    K: 2,
+    K: 2
   },
   V: {
     C: 0,
     M: 0,
     J: 2,
     V: 2,
-    K: 0,
+    K: 0
   },
   K: {
     C: 1,
     M: 0,
     J: 1,
     V: 0,
-    K: 2,
-  },
+    K: 2
+  }
 };
 
 /**
@@ -133,7 +133,7 @@ export const TaraMatrix: Record<string, Record<string, number>> = {
     'Ardr,Swat,Sata': 3,
     'Puna,Vish,PBha': 3 / 2,
     'Push,Anu,UBha': 3,
-    'Asre,Jye,Reva': 3,
+    'Asre,Jye,Reva': 3
   },
   'Bhar,PPha,PSha': {
     'Ashv,Magh,Mool': 3,
@@ -144,7 +144,7 @@ export const TaraMatrix: Record<string, Record<string, number>> = {
     'Ardr,Swat,Sata': 3,
     'Puna,Vish,PBha': 3 / 2,
     'Push,Anu,UBha': 3,
-    'Asre,Jye,Reva': 3,
+    'Asre,Jye,Reva': 3
   },
   'Krit,UPha,USha': {
     'Ashv,Magh,Mool': 3 / 2,
@@ -155,7 +155,7 @@ export const TaraMatrix: Record<string, Record<string, number>> = {
     'Ardr,Swat,Sata': 3 / 2,
     'Puna,Vish,PBha': 0,
     'Push,Anu,UBha': 3 / 2,
-    'Asre,Jye,Reva': 3 / 2,
+    'Asre,Jye,Reva': 3 / 2
   },
   'Rohi,Hast,Srav': {
     'Ashv,Magh,Mool': 3,
@@ -166,7 +166,7 @@ export const TaraMatrix: Record<string, Record<string, number>> = {
     'Ardr,Swat,Sata': 3,
     'Puna,Vish,PBha': 3 / 2,
     'Push,Anu,UBha': 3,
-    'Asre,Jye,Reva': 3,
+    'Asre,Jye,Reva': 3
   },
   'Mrig,Chit,Dhan': {
     'Ashv,Magh,Mool': 3 / 2,
@@ -177,7 +177,7 @@ export const TaraMatrix: Record<string, Record<string, number>> = {
     'Ardr,Swat,Sata': 3 / 2,
     'Puna,Vish,PBha': 0,
     'Push,Anu,UBha': 3 / 2,
-    'Asre,Jye,Reva': 3 / 2,
+    'Asre,Jye,Reva': 3 / 2
   },
   'Ardr,Swat,Sata': {
     'Ashv,Magh,Mool': 3,
@@ -188,7 +188,7 @@ export const TaraMatrix: Record<string, Record<string, number>> = {
     'Ardr,Swat,Sata': 3,
     'Puna,Vish,PBha': 3 / 2,
     'Push,Anu,UBha': 3,
-    'Asre,Jye,Reva': 3,
+    'Asre,Jye,Reva': 3
   },
   'Puna,Vish,PBha': {
     'Ashv,Magh,Mool': 3 / 2,
@@ -199,7 +199,7 @@ export const TaraMatrix: Record<string, Record<string, number>> = {
     'Ardr,Swat,Sata': 3 / 2,
     'Puna,Vish,PBha': 0,
     'Push,Anu,UBha': 3 / 2,
-    'Asre,Jye,Reva': 3 / 2,
+    'Asre,Jye,Reva': 3 / 2
   },
   'Push,Anu,UBha': {
     'Ashv,Magh,Mool': 3,
@@ -210,7 +210,7 @@ export const TaraMatrix: Record<string, Record<string, number>> = {
     'Ardr,Swat,Sata': 3,
     'Puna,Vish,PBha': 3 / 2,
     'Push,Anu,UBha': 3,
-    'Asre,Jye,Reva': 3,
+    'Asre,Jye,Reva': 3
   },
   'Asre,Jye,Reva': {
     'Ashv,Magh,Mool': 3,
@@ -221,8 +221,8 @@ export const TaraMatrix: Record<string, Record<string, number>> = {
     'Ardr,Swat,Sata': 3,
     'Puna,Vish,PBha': 3 / 2,
     'Push,Anu,UBha': 3,
-    'Asre,Jye,Reva': 3,
-  },
+    'Asre,Jye,Reva': 3
+  }
 };
 
 /**
@@ -243,7 +243,7 @@ export const YoniMatrix: Record<string, Record<string, number>> = {
     LEDI: 3,
     KOTI: 3,
     MUNGISA: 2,
-    SIMHAM: 1,
+    SIMHAM: 1
   },
   GAJAM: {
     ASHWAM: 2,
@@ -259,7 +259,7 @@ export const YoniMatrix: Record<string, Record<string, number>> = {
     LEDI: 2,
     KOTI: 3,
     MUNGISA: 2,
-    SIMHAM: 0,
+    SIMHAM: 0
   },
   MEKA: {
     ASHWAM: 2,
@@ -275,7 +275,7 @@ export const YoniMatrix: Record<string, Record<string, number>> = {
     LEDI: 2,
     KOTI: 0,
     MUNGISA: 3,
-    SIMHAM: 1,
+    SIMHAM: 1
   },
   SARPAM: {
     ASHWAM: 3,
@@ -291,7 +291,7 @@ export const YoniMatrix: Record<string, Record<string, number>> = {
     LEDI: 2,
     KOTI: 2,
     MUNGISA: 0,
-    SIMHAM: 2,
+    SIMHAM: 2
   },
   KUKKA: {
     ASHWAM: 2,
@@ -307,7 +307,7 @@ export const YoniMatrix: Record<string, Record<string, number>> = {
     LEDI: 2,
     KOTI: 2,
     MUNGISA: 1,
-    SIMHAM: 1,
+    SIMHAM: 1
   },
   PILLI: {
     ASHWAM: 2,
@@ -323,7 +323,7 @@ export const YoniMatrix: Record<string, Record<string, number>> = {
     LEDI: 3,
     KOTI: 3,
     MUNGISA: 1,
-    SIMHAM: 1,
+    SIMHAM: 1
   },
   ELUKA: {
     ASHWAM: 2,
@@ -339,7 +339,7 @@ export const YoniMatrix: Record<string, Record<string, number>> = {
     LEDI: 2,
     KOTI: 2,
     MUNGISA: 1,
-    SIMHAM: 1,
+    SIMHAM: 1
   },
   GOVU: {
     ASHWAM: 1,
@@ -355,7 +355,7 @@ export const YoniMatrix: Record<string, Record<string, number>> = {
     LEDI: 3,
     KOTI: 2,
     MUNGISA: 2,
-    SIMHAM: 1,
+    SIMHAM: 1
   },
   DUNNA: {
     ASHWAM: 0,
@@ -371,7 +371,7 @@ export const YoniMatrix: Record<string, Record<string, number>> = {
     LEDI: 2,
     KOTI: 2,
     MUNGISA: 2,
-    SIMHAM: 3,
+    SIMHAM: 3
   },
   PULI: {
     ASHWAM: 1,
@@ -387,7 +387,7 @@ export const YoniMatrix: Record<string, Record<string, number>> = {
     LEDI: 1,
     KOTI: 1,
     MUNGISA: 2,
-    SIMHAM: 2,
+    SIMHAM: 2
   },
   LEDI: {
     ASHWAM: 3,
@@ -403,7 +403,7 @@ export const YoniMatrix: Record<string, Record<string, number>> = {
     LEDI: 4,
     KOTI: 2,
     MUNGISA: 2,
-    SIMHAM: 2,
+    SIMHAM: 2
   },
   KOTI: {
     ASHWAM: 3,
@@ -419,7 +419,7 @@ export const YoniMatrix: Record<string, Record<string, number>> = {
     LEDI: 2,
     KOTI: 4,
     MUNGISA: 3,
-    SIMHAM: 2,
+    SIMHAM: 2
   },
   MUNGISA: {
     ASHWAM: 2,
@@ -435,7 +435,7 @@ export const YoniMatrix: Record<string, Record<string, number>> = {
     LEDI: 2,
     KOTI: 3,
     MUNGISA: 4,
-    SIMHAM: 2,
+    SIMHAM: 2
   },
   SIMHAM: {
     ASHWAM: 1,
@@ -451,8 +451,8 @@ export const YoniMatrix: Record<string, Record<string, number>> = {
     LEDI: 2,
     KOTI: 2,
     MUNGISA: 2,
-    SIMHAM: 4,
-  },
+    SIMHAM: 4
+  }
 };
 
 /**
@@ -466,7 +466,7 @@ export const GrahaMatrix: Record<string, Record<string, number>> = {
     Merc: 4,
     Jup: 5,
     Ven: 0,
-    Sat: 0,
+    Sat: 0
   },
   Moon: {
     Sun: 5,
@@ -475,7 +475,7 @@ export const GrahaMatrix: Record<string, Record<string, number>> = {
     Merc: 1,
     Jup: 4,
     Ven: 1 / 2,
-    Sat: 1 / 2,
+    Sat: 1 / 2
   },
   Mars: {
     Sun: 5,
@@ -484,7 +484,7 @@ export const GrahaMatrix: Record<string, Record<string, number>> = {
     Merc: 1 / 2,
     Jup: 5,
     Ven: 3,
-    Sat: 1 / 2,
+    Sat: 1 / 2
   },
   Merc: {
     Sun: 4,
@@ -493,7 +493,7 @@ export const GrahaMatrix: Record<string, Record<string, number>> = {
     Merc: 5,
     Jup: 1 / 2,
     Ven: 5,
-    Sat: 4,
+    Sat: 4
   },
   Jup: {
     Sun: 5,
@@ -502,7 +502,7 @@ export const GrahaMatrix: Record<string, Record<string, number>> = {
     Merc: 1 / 2,
     Jup: 5,
     Ven: 1 / 2,
-    Sat: 3,
+    Sat: 3
   },
   Ven: {
     Sun: 0,
@@ -511,7 +511,7 @@ export const GrahaMatrix: Record<string, Record<string, number>> = {
     Merc: 5,
     Jup: 1 / 2,
     Ven: 5,
-    Sat: 5,
+    Sat: 5
   },
   Sat: {
     Sun: 0,
@@ -520,8 +520,8 @@ export const GrahaMatrix: Record<string, Record<string, number>> = {
     Merc: 4,
     Jup: 3,
     Ven: 5,
-    Sat: 5,
-  },
+    Sat: 5
+  }
 };
 
 /**
@@ -534,18 +534,18 @@ export const GanaMatrix: Record<string, Record<string, number>> = {
   D: {
     D: 6,
     M: 5,
-    R: 1,
+    R: 1
   },
   M: {
     D: 5,
     M: 6,
-    R: 0,
+    R: 0
   },
   R: {
     D: 1,
     M: 0,
-    R: 6,
-  },
+    R: 6
+  }
 };
 
 /**
@@ -564,7 +564,7 @@ export const RaasiMatrix: Record<string, Record<string, number>> = {
     Sg: 0,
     Cp: 7,
     Aq: 7,
-    Pi: 0,
+    Pi: 0
   },
   Ta: {
     Ar: 0,
@@ -578,7 +578,7 @@ export const RaasiMatrix: Record<string, Record<string, number>> = {
     Sg: 0,
     Cp: 0,
     Aq: 7,
-    Pi: 7,
+    Pi: 7
   },
   Ge: {
     Ar: 7,
@@ -592,7 +592,7 @@ export const RaasiMatrix: Record<string, Record<string, number>> = {
     Sg: 7,
     Cp: 0,
     Aq: 0,
-    Pi: 7,
+    Pi: 7
   },
   Cn: {
     Ar: 7,
@@ -606,7 +606,7 @@ export const RaasiMatrix: Record<string, Record<string, number>> = {
     Sg: 0,
     Cp: 7,
     Aq: 0,
-    Pi: 0,
+    Pi: 0
   },
   Le: {
     Ar: 0,
@@ -620,7 +620,7 @@ export const RaasiMatrix: Record<string, Record<string, number>> = {
     Sg: 0,
     Cp: 0,
     Aq: 7,
-    Pi: 0,
+    Pi: 0
   },
   Vi: {
     Ar: 0,
@@ -634,7 +634,7 @@ export const RaasiMatrix: Record<string, Record<string, number>> = {
     Sg: 7,
     Cp: 0,
     Aq: 0,
-    Pi: 7,
+    Pi: 7
   },
   Li: {
     Ar: 7,
@@ -648,7 +648,7 @@ export const RaasiMatrix: Record<string, Record<string, number>> = {
     Sg: 7,
     Cp: 7,
     Aq: 0,
-    Pi: 0,
+    Pi: 0
   },
   Sc: {
     Ar: 0,
@@ -662,7 +662,7 @@ export const RaasiMatrix: Record<string, Record<string, number>> = {
     Sg: 0,
     Cp: 7,
     Aq: 7,
-    Pi: 0,
+    Pi: 0
   },
   Sg: {
     Ar: 0,
@@ -676,7 +676,7 @@ export const RaasiMatrix: Record<string, Record<string, number>> = {
     Sg: 7,
     Cp: 0,
     Aq: 7,
-    Pi: 7,
+    Pi: 7
   },
   Cp: {
     Ar: 7,
@@ -690,7 +690,7 @@ export const RaasiMatrix: Record<string, Record<string, number>> = {
     Sg: 0,
     Cp: 7,
     Aq: 0,
-    Pi: 7,
+    Pi: 7
   },
   Aq: {
     Ar: 7,
@@ -704,7 +704,7 @@ export const RaasiMatrix: Record<string, Record<string, number>> = {
     Sg: 7,
     Cp: 0,
     Aq: 7,
-    Pi: 0,
+    Pi: 0
   },
   Pi: {
     Ar: 0,
@@ -718,8 +718,8 @@ export const RaasiMatrix: Record<string, Record<string, number>> = {
     Sg: 7,
     Cp: 7,
     Aq: 0,
-    Pi: 7,
-  },
+    Pi: 7
+  }
 };
 
 /**
@@ -732,46 +732,46 @@ export const NaadiMatrix: Record<string, Record<string, number>> = {
   Ad: {
     Ad: 0,
     Md: 8,
-    An: 8,
+    An: 8
   },
   Md: {
     Ad: 8,
     Md: 0,
-    An: 8,
+    An: 8
   },
   An: {
     Ad: 8,
     Md: 8,
-    An: 0,
-  },
+    An: 0
+  }
 };
 
 export const RajjuKootami = [
   {
     name: 'Paada Rajju',
     stars: ['Ashv', 'Asre', 'Magh', 'Jye', 'Mool', 'Reva'],
-    outcome: '',
+    outcome: ''
   },
   {
     name: 'Jaanu Rajju',
     stars: ['Bhar', 'Push', 'PPha', 'Anu', 'PSha', 'UBha'],
-    outcome: '',
+    outcome: ''
   },
   {
     name: 'Naabhi Rajju',
     stars: ['Krit', 'Puna', 'UPha', 'Vish', 'USha', 'PBha'],
-    outcome: '',
+    outcome: ''
   },
   {
     name: 'Kanta Rajju',
     stars: ['Rohi', 'Ardr', 'Hast', 'Swat', 'Srav', 'Sata'],
-    outcome: '',
+    outcome: ''
   },
   {
     name: 'Siro Rajju',
     stars: ['Mrig', 'Chit', 'Dhan'],
-    outcome: '',
-  },
+    outcome: ''
+  }
 ];
 
 export const NonMatchingStars = {
@@ -789,25 +789,20 @@ export const NonMatchingStars = {
   PBha: ['UPha'],
   Sata: ['Hast'],
   Dhan: ['Mrig', 'Chit'],
-  Chit: ['Mrig', 'Dhan'],
+  Chit: ['Mrig', 'Dhan']
 };
 
-export const NaadiNakshatraExceptions: Record<
-  string,
-  { affectedStars: string[]; remarks: string }
-> = {
+export const NaadiNakshatraExceptions: Record<string, { affectedStars: string[]; remarks: string }> = {
   Ad: {
     affectedStars: ['Hast', 'Jye'],
-    remarks:
-      'మానవ మేధో సంపత్తి, ప్రతీకార వాంఛ, ఆలోచన విధానం, కోపం, ఆవేశం, రణత్వం తెలుపుతుంది',
+    remarks: 'మానవ మేధో సంపత్తి, ప్రతీకార వాంఛ, ఆలోచన విధానం, కోపం, ఆవేశం, రణత్వం తెలుపుతుంది'
   },
   Md: {
     affectedStars: ['Bhar', 'UBha'],
-    remarks:
-      'శరీర మధ్య భాగం లో రుగ్మతలు, సంతానం, ఊపిరితిత్తులు, గుండెల్లో ఉన్న రుగ్మతలు',
+    remarks: 'శరీర మధ్య భాగం లో రుగ్మతలు, సంతానం, ఊపిరితిత్తులు, గుండెల్లో ఉన్న రుగ్మతలు'
   },
   An: {
     affectedStars: ['Swat', 'Reva'],
-    remarks: 'మర్మావయాలు, కామవాంచ, నపుంసకత్వం, శరీర ఉష్ణోగ్రత',
-  },
+    remarks: 'మర్మావయాలు, కామవాంచ, నపుంసకత్వం, శరీర ఉష్ణోగ్రత'
+  }
 };

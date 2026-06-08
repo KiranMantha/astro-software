@@ -1,17 +1,17 @@
-import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, signal } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { SelectComponent } from '../../shared/ui';
 import { NAKSHATRA_FULL_NAMES } from '../../data/constants';
-import { NakshatraPadaData } from '../../data/nakshatraPada.data';
+import { NakshatraPadaData } from '../../data/NakshatraPada.data';
 import { PadaInfo } from '../../shared/models';
+import { SelectComponent } from '../../shared/ui';
 
 @Component({
   selector: 'app-nakshatra-pada',
   standalone: true,
   imports: [CommonModule, FormsModule, SelectComponent],
   templateUrl: './nakshatra-pada.component.html',
-  styleUrls: ['./nakshatra-pada.component.scss'],
+  styleUrls: ['./nakshatra-pada.component.scss']
 })
 export class NakshatraPadaComponent {
   // Signal to hold the result
@@ -24,8 +24,8 @@ export class NakshatraPadaComponent {
     { label: 'Select', value: '' },
     ...Object.entries(NAKSHATRA_FULL_NAMES).map(([key, value]) => ({
       label: value,
-      value: key,
-    })),
+      value: key
+    }))
   ];
 
   padaOptions = [
@@ -33,14 +33,12 @@ export class NakshatraPadaComponent {
     { label: 'Pada 1', value: '1' },
     { label: 'Pada 2', value: '2' },
     { label: 'Pada 3', value: '3' },
-    { label: 'Pada 4', value: '4' },
+    { label: 'Pada 4', value: '4' }
   ];
 
   onSubmit(form: NgForm) {
     if (this.selectedNakshatra && this.selectedPada) {
-      const data = (NakshatraPadaData as any)[this.selectedNakshatra][
-        this.selectedPada
-      ];
+      const data = (NakshatraPadaData as any)[this.selectedNakshatra][this.selectedPada];
       this.selectedPadaInfo.set(data);
     }
   }

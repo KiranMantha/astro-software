@@ -1,17 +1,10 @@
-import {
-  Component,
-  ElementRef,
-  ViewChild,
-  signal,
-  computed,
-  inject,
-} from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, ElementRef, ViewChild, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { AstroParseTableService } from './astro-parse-table.service';
+import { KarmicDoshas } from '../../data/KarmicDoshas';
+import { NakshatraPadaData } from '../../data/NakshatraPada.data';
 import { AstroRowData } from './astro-parse-table.model';
-import { KarmicDoshas } from '../../data/karmicDoshas';
-import { NakshatraPadaData } from '../../data/nakshatraPada.data';
+import { AstroParseTableService } from './astro-parse-table.service';
 
 @Component({
   selector: 'app-astro-parse-table',
@@ -19,7 +12,7 @@ import { NakshatraPadaData } from '../../data/nakshatraPada.data';
   imports: [CommonModule, FormsModule],
   providers: [AstroParseTableService],
   templateUrl: './astro-parse-table.component.html',
-  styleUrls: ['./astro-parse-table.component.scss'],
+  styleUrls: ['./astro-parse-table.component.scss']
 })
 export class AstroParseTableComponent {
   private astroService = inject(AstroParseTableService);
@@ -55,7 +48,7 @@ export class AstroParseTableComponent {
     { name: 'Neptune' },
     { name: 'Pluto' },
     { name: 'Maandi' },
-    { name: 'Bhrigu Bindu' },
+    { name: 'Bhrigu Bindu' }
   ];
 
   protected readonly NakshatraPadaData = NakshatraPadaData as any;

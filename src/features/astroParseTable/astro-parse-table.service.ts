@@ -1,5 +1,5 @@
-import { Injectable, signal } from '@angular/core';
-import { RASI_FULL_NAMES, NAVAMSA_COMBINATION } from '../../data/constants';
+import { Injectable } from '@angular/core';
+import { NAVAMSA_COMBINATION, RASI_FULL_NAMES } from '../../data/constants';
 import { parseAstroText } from '../../shared/helpers';
 import { AstroRowData } from './astro-parse-table.model';
 
