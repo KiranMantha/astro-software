@@ -1,5 +1,5 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './select.component.html',
-  styleUrls: ['./select.component.scss'],
+  styleUrls: ['./select.component.scss']
 })
 export class SelectComponent {
   @Input({ required: true }) label!: string;

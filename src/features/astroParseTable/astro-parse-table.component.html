@@ -1,139 +1,123 @@
-<textarea
-  rows="15"
-  [(ngModel)]="input"
-  placeholder="Paste astrology data here..."
-  class="formControl"
-></textarea>
+<textarea rows="15" [(ngModel)]="input" placeholder="Paste astrology data here..." class="formControl"></textarea>
 
 <div class="text-center actions">
   <button (click)="handleSubmit()">Generate Table</button>
 </div>
 
 @if (rows().length > 0) {
-<details open>
-  <summary><strong>Planet Details</strong></summary>
-  <div class="table-responsive">
-    <table class="planetDetails">
-      <thead>
-        <tr>
-          <th>Body</th>
-          <th>Longitude</th>
-          <th>Nakshatra</th>
-          <th>Pada</th>
-          <th>Rasi (D1)</th>
-          <th>Navamsa (D9)</th>
-          <th>Rasi Combination</th>
-          <th>Characteristics</th>
-          <th>Career Path</th>
-          <th>Karmic Dosha</th>
-          <th>Karmic Planet</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for (row of rows(); track $index) {
-        <tr>
-          <td>{{ row.body }}</td>
-          <td>{{ row.longitude }}</td>
-          <td>{{ row.nakshatra }}</td>
-          <td>{{ row.pada }}</td>
-          <td>{{ row.rasi }}</td>
-          <td>{{ row.navamsa }}</td>
-          <td>{{ getDistance(row.rasiCode, row.navamsaCode) }}</td>
-          <td>
-            {{
-              NakshatraPadaData[row.nakshatraCode][row.pada]['Characteristics']
-            }}
-          </td>
-          <td>
-            {{ NakshatraPadaData[row.nakshatraCode][row.pada]['Career Path'] }}
-          </td>
-          <td>
-            @if (row.hasKarmicDosha) {
-            <span>Yes</span>
-            <button
-              data-size="sm"
-              (click)="openDosha(row.nakshatraCode, row.rasi)"
-            >
-              View
-            </button>
-            } @else { No }
-          </td>
-          <td>
-            {{ row.karmicPlanet }}
-            <button
-              data-size="sm"
-              (click)="openResults(row.karmicPlanetResults)"
-            >
-              View
-            </button>
-          </td>
-        </tr>
-        }
-      </tbody>
-    </table>
-  </div>
-</details>
+  <details open>
+    <summary><strong>Planet Details</strong></summary>
+    <div class="table-responsive">
+      <table class="planetDetails">
+        <thead>
+          <tr>
+            <th>Body</th>
+            <th>Longitude</th>
+            <th>Nakshatra</th>
+            <th>Pada</th>
+            <th>Rasi (D1)</th>
+            <th>Navamsa (D9)</th>
+            <th>Rasi Combination</th>
+            <th>Characteristics</th>
+            <th>Career Path</th>
+            <th>Karmic Dosha</th>
+            <th>Karmic Planet</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (row of rows(); track $index) {
+            <tr>
+              <td>{{ row.body }}</td>
+              <td>{{ row.longitude }}</td>
+              <td>{{ row.nakshatra }}</td>
+              <td>{{ row.pada }}</td>
+              <td>{{ row.rasi }}</td>
+              <td>{{ row.navamsa }}</td>
+              <td>{{ getDistance(row.rasiCode, row.navamsaCode) }}</td>
+              <td>
+                {{ NakshatraPadaData[row.nakshatraCode][row.pada]['Characteristics'] }}
+              </td>
+              <td>
+                {{ NakshatraPadaData[row.nakshatraCode][row.pada]['Career Path'] }}
+              </td>
+              <td>
+                @if (row.hasKarmicDosha) {
+                  <span>Yes</span>
+                  <button data-size="sm" (click)="openDosha(row.nakshatraCode, row.rasi)">View</button>
+                } @else {
+                  No
+                }
+              </td>
+              <td>
+                {{ row.karmicPlanet }}
+                <button data-size="sm" (click)="openResults(row.karmicPlanetResults)">View</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </details>
 
-<details>
-  <summary><strong>Navamsa Matrix</strong></summary>
-  <div class="table-responsive">
-    <table class="matrixTable">
-      <thead>
-        <tr>
-          <th></th>
-          @for (p of planets; track p.name) {
-          <th
-            [style.background-color]="hoveredCol() === $index ? '#fff3cd' : ''"
-          >
-            {{ p.name }}
-          </th>
-          }
-        </tr>
-      </thead>
-      <tbody>
-        @for (rowP of planets; track rowP.name; let rIdx = $index) {
-        <tr [style.background-color]="hoveredRow() === rIdx ? '#fff3cd' : ''">
-          <td style="font-weight:bold">{{ rowP.name }}</td>
-          @for (colP of planets; track colP.name; let cIdx = $index) { @let
-          rowVal = planetMatrix()[rowP.name]; @let colVal =
-          planetMatrix()[colP.name];
-          <td
-            [style.background-color]="getCellBg(rIdx, cIdx)"
-            (mouseenter)="setHover(rIdx, cIdx)"
-            (mouseleave)="setHover(null, null)"
-          >
-            @if (rowP.name === colP.name) { X } @else { @let diff = colVal -
-            rowVal;
-            {{ (diff < 0 ? diff + 108 : diff) + 1 }}
+  <details>
+    <summary><strong>Navamsa Matrix</strong></summary>
+    <div class="table-responsive">
+      <table class="matrixTable">
+        <thead>
+          <tr>
+            <th></th>
+            @for (p of planets; track p.name) {
+              <th [style.background-color]="hoveredCol() === $index ? '#fff3cd' : ''">
+                {{ p.name }}
+              </th>
             }
-          </td>
+          </tr>
+        </thead>
+        <tbody>
+          @for (rowP of planets; track rowP.name; let rIdx = $index) {
+            <tr [style.background-color]="hoveredRow() === rIdx ? '#fff3cd' : ''">
+              <td style="font-weight: bold">{{ rowP.name }}</td>
+              @for (colP of planets; track colP.name; let cIdx = $index) {
+                @let rowVal = planetMatrix()[rowP.name]; @let colVal = planetMatrix()[colP.name];
+                <td
+                  [style.background-color]="getCellBg(rIdx, cIdx)"
+                  (mouseenter)="setHover(rIdx, cIdx)"
+                  (mouseleave)="setHover(null, null)"
+                >
+                  @if (rowP.name === colP.name) {
+                    X
+                  } @else {
+                    @let diff = colVal - rowVal;
+                    {{ (diff < 0 ? diff + 108 : diff) + 1 }}
+                  }
+                </td>
+              }
+            </tr>
           }
-        </tr>
-        }
-      </tbody>
-    </table>
-  </div>
-</details>
+        </tbody>
+      </table>
+    </div>
+  </details>
 }
 
 <dialog #doshaDialog class="karmicDoshaDialog">
   @if (selectedDosha()) {
-  <table>
-    <tbody>
-      <tr>
-        <td>Rasi, Nakshatra</td>
-        <td>{{ selectedDosha().rasi }}, {{ selectedDosha().nakshatra }}</td>
-      </tr>
-      <tr>
-        <td>Indications</td>
-        <td>{{ selectedDosha().indications }}</td>
-      </tr>
-      <tr>
-        <td>Remedies</td>
-        <td>{{ selectedDosha().remidies }}</td>
-      </tr>
-    </tbody>
-  </table>
+    <table>
+      <tbody>
+        <tr>
+          <td>Rasi, Nakshatra</td>
+          <td>{{ selectedDosha().rasi }}, {{ selectedDosha().nakshatra }}</td>
+        </tr>
+        <tr>
+          <td>Indications</td>
+          <td>{{ selectedDosha().indications }}</td>
+        </tr>
+        <tr>
+          <td>Remedies</td>
+          <td>{{ selectedDosha().remidies }}</td>
+        </tr>
+      </tbody>
+    </table>
   }
   <div class="text-center">
     <button (click)="doshaDialog.close()">Close</button>

@@ -1,9 +1,5 @@
 <div class="nakshatra-pada-container">
-  <form
-    #padaForm="ngForm"
-    (ngSubmit)="onSubmit(padaForm)"
-    class="nakshatra-pada-form"
-  >
+  <form #padaForm="ngForm" (ngSubmit)="onSubmit(padaForm)" class="nakshatra-pada-form">
     <app-select
       label="Select Nakshatra"
       [options]="nakshatraOptions"
@@ -11,21 +7,16 @@
       fieldName="nakshatra"
     ></app-select>
 
-    <app-select
-      label="Select Pada"
-      [options]="padaOptions"
-      [(value)]="selectedPada"
-      fieldName="pada"
-    ></app-select>
+    <app-select label="Select Pada" [options]="padaOptions" [(value)]="selectedPada" fieldName="pada"></app-select>
 
     <button type="submit">Submit</button>
   </form>
 
   @if (selectedPadaInfo()) {
-  <div>
-    <pre>
+    <div>
+      <pre>
       <code>{{ selectedPadaInfo() | json }}</code>
     </pre>
-  </div>
+    </div>
   }
 </div>

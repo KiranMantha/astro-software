@@ -1,13 +1,9 @@
 <div class="tabs">
   <div class="tab-headers">
     @for (tab of tabs; track tab.value) {
-    <button
-      data-variant="outline"
-      [class.active]="activeTabValue === tab.value"
-      (click)="selectTab(tab.value)"
-    >
-      {{ tab.title }}
-    </button>
+      <button data-variant="outline" [class.active]="activeTabValue === tab.value" (click)="selectTab(tab.value)">
+        {{ tab.title }}
+      </button>
     }
   </div>
 
