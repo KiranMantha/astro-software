@@ -1,0 +1,22 @@
+<div class="numerology-container">
+  <div class="header">
+    <h2>Numerology Pyramid Generator</h2>
+    <input type="text" [(ngModel)]="inputName" (input)="generatePyramid()" placeholder="Enter name here..." />
+  </div>
+
+  <div class="pyramid-grid" *ngIf="lettersRow.length > 0">
+    <div class="grid-row">
+      <div class="cell letter-cell" *ngFor="let letter of lettersRow">
+        {{ letter }}
+      </div>
+    </div>
+
+    <div class="grid-row" *ngFor="let row of pyramidRows; let rowIndex = index">
+      <div class="spacer-cell" *ngFor="let spacer of [].constructor(rowIndex)"></div>
+
+      <div class="cell value-cell" *ngFor="let val of row">
+        {{ val }}
+      </div>
+    </div>
+  </div>
+</div>

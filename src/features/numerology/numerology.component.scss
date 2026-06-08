@@ -1,0 +1,65 @@
+// SCSS Variables for easy tweaking
+$cell-size: 45px;
+$bg-color: #fff8dc; // Light cream color matching the image
+$border-style: 1px dotted #555;
+
+.numerology-container {
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 25px;
+
+    input {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+
+  .pyramid-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+
+    .grid-row {
+      display: flex;
+
+      // Base shared dimensions for spacing blocks and content boxes
+      .cell,
+      .spacer-cell {
+        width: $cell-size;
+        height: $cell-size;
+        box-sizing: border-box;
+      }
+
+      // Visible grid cells containing alphanumeric characters
+      .cell {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        background-color: $bg-color;
+        border-right: $border-style;
+        border-bottom: $border-style;
+
+        // Apply a left border only to the first visual box of every row
+        &:first-of-type {
+          border-left: $border-style;
+        }
+      }
+
+      .spacer-cell + .cell {
+        border-left: $border-style;
+      }
+
+      // Edge case rule: Top row (letters) needs an upper border
+      &:first-child {
+        .cell {
+          border-top: $border-style;
+        }
+      }
+    }
+  }
+}
