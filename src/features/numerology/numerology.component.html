@@ -79,7 +79,7 @@
                   <td>
                     <span class="badge">{{ row.value }}</span>
                   </td>
-                  <td>{{ row.favColors }}</td>
+                  <td>{{ row.favoriteColors }}</td>
                   <td>{{ row.excellent }}</td>
                   <td>{{ row.good }}</td>
                   <td class="text-danger">{{ row.bad }}</td>
@@ -88,6 +88,116 @@
               }
             </tbody>
           </table>
+        </div>
+        <h3 class="sub-header">Pythagorean Letter Score Breakdown</h3>
+        <table class="pythagorean-table">
+          <thead>
+            <tr>
+              @for (item of pythagoreanScores; track $index) {
+                <th>{{ item.letter }}</th>
+              }
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              @for (item of pythagoreanScores; track $index) {
+                <td>{{ item.score }}</td>
+              }
+            </tr>
+          </tbody>
+        </table>
+        <div class="feature-section">
+          <h3 class="sub-header">Matrix Alignment Map</h3>
+          <div class="matrix-grid-container">
+            <table class="matrix-grid">
+              <tr>
+                <td [class.has-letters]="matrixCellLetters['Pi']?.length">
+                  <div class="cell-layout">
+                    <span>Pi</span> <strong class="placed-letters">{{ getCellLettersDisplay('Pi') }}</strong>
+                  </div>
+                </td>
+                <td [class.has-letters]="matrixCellLetters['Ar']?.length">
+                  <div class="cell-layout">
+                    <span>Ar</span> <strong class="placed-letters">{{ getCellLettersDisplay('Ar') }}</strong>
+                  </div>
+                </td>
+                <td [class.has-letters]="matrixCellLetters['Ta']?.length">
+                  <div class="cell-layout">
+                    <span>Ta</span> <strong class="placed-letters">{{ getCellLettersDisplay('Ta') }}</strong>
+                  </div>
+                </td>
+                <td [class.has-letters]="matrixCellLetters['Ge']?.length">
+                  <div class="cell-layout">
+                    <span>Ge</span> <strong class="placed-letters">{{ getCellLettersDisplay('Ge') }}</strong>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td [class.has-letters]="matrixCellLetters['Aq']?.length">
+                  <div class="cell-layout">
+                    <span>Aq</span> <strong class="placed-letters">{{ getCellLettersDisplay('Aq') }}</strong>
+                  </div>
+                </td>
+                <td class="empty-cell" colspan="2" rowspan="2"></td>
+                <td [class.has-letters]="matrixCellLetters['Ca']?.length">
+                  <div class="cell-layout">
+                    <span>Ca</span> <strong class="placed-letters">{{ getCellLettersDisplay('Ca') }}</strong>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td [class.has-letters]="matrixCellLetters['Cp']?.length">
+                  <div class="cell-layout">
+                    <span>Cp</span> <strong class="placed-letters">{{ getCellLettersDisplay('Cp') }}</strong>
+                  </div>
+                </td>
+                <td [class.has-letters]="matrixCellLetters['Le']?.length">
+                  <div class="cell-layout">
+                    <span>Le</span> <strong class="placed-letters">{{ getCellLettersDisplay('Le') }}</strong>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td [class.has-letters]="matrixCellLetters['Sg']?.length">
+                  <div class="cell-layout">
+                    <span>Sg</span> <strong class="placed-letters">{{ getCellLettersDisplay('Sg') }}</strong>
+                  </div>
+                </td>
+                <td [class.has-letters]="matrixCellLetters['Sc']?.length">
+                  <div class="cell-layout">
+                    <span>Sc</span> <strong class="placed-letters">{{ getCellLettersDisplay('Sc') }}</strong>
+                  </div>
+                </td>
+                <td [class.has-letters]="matrixCellLetters['Li']?.length">
+                  <div class="cell-layout">
+                    <span>Li</span> <strong class="placed-letters">{{ getCellLettersDisplay('Li') }}</strong>
+                  </div>
+                </td>
+                <td [class.has-letters]="matrixCellLetters['Vi']?.length">
+                  <div class="cell-layout">
+                    <span>Vi</span> <strong class="placed-letters">{{ getCellLettersDisplay('Vi') }}</strong>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="feature-section">
+          <h3 class="sub-header">Chronological Cycle Milestones</h3>
+          <div class="timeline-container">
+            <table class="timeline-table">
+              @for (item of yearTimeline; track $index) {
+                <tr>
+                  <td>
+                    <span class="timeline-label">{{ item.label }}:</span>
+                  </td>
+                  <td>
+                    <strong class="timeline-year">{{ item.year }}</strong>
+                  </td>
+                </tr>
+              }
+            </table>
+          </div>
         </div>
       }
     </div>

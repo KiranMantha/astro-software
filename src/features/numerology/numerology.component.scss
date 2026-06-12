@@ -86,4 +86,21 @@ $border-style: 1px dotted #555;
       }
     }
   }
+
+  .matrix-grid {
+    table-layout: fixed;
+    border-top: 1px solid var(--border-color);
+
+    .cell-layout {
+      span {
+        display: inline-block;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .timeline-table {
+    border-top: 1px solid var(--border-color);
+    width: auto;
+  }
 }
