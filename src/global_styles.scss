@@ -1,4 +1,5 @@
 @use './ui.scss';
+@use './utils' as *;
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -98,7 +99,11 @@ body {
 #app {
   max-width: 1920px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2rem 1rem;
+
+  @include fromMd {
+    padding: 2rem;
+  }
 }
 
 a {
