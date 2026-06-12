@@ -275,3 +275,69 @@ export const NUMEROLOGY_LETTER_SCORES: { [key: string]: number } = {
   F: 8,
   P: 8
 };
+
+export const NUMEROLOGY_MAP = {
+  1: {
+    favorableColors: ['Orange', 'White'],
+    excellent: [1, 4],
+    good: [5, 9, 3],
+    bad: [7, 8],
+    neutral: [2, 6]
+  },
+  2: {
+    favorableColors: ['White', 'Grey'],
+    excellent: [7, 5],
+    good: [2, 6, 4],
+    bad: [9, 8],
+    neutral: [1, 3]
+  },
+  3: {
+    favorableColors: ['Yellow', 'Turquoise', 'Light Blue'],
+    excellent: [1, 9],
+    good: [3, 5],
+    bad: [6, 8],
+    neutral: [2, 4, 7]
+  },
+  4: {
+    favorableColors: ['Mixed Colors'],
+    excellent: [1],
+    good: [5, 6],
+    bad: [4, 7, 8],
+    neutral: [2, 3, 9]
+  },
+  5: {
+    favorableColors: ['Light Green'],
+    excellent: [4, 5],
+    good: [1, 2, 3, 6, 7, 8, 9],
+    bad: [],
+    neutral: []
+  },
+  6: {
+    favorableColors: ['Pink'],
+    excellent: [5],
+    good: [6, 9],
+    bad: [1, 7, 8],
+    neutral: [2, 3, 4]
+  },
+  7: {
+    favorableColors: ['All Colours'],
+    excellent: [2],
+    good: [5],
+    bad: [8, 9],
+    neutral: [1, 3, 4, 6, 7]
+  },
+  8: {
+    favorableColors: ['Light Black', 'Dark Blue', 'Royal Blue', 'Light Blue'],
+    excellent: [5],
+    good: [1],
+    bad: [8, 4, 7],
+    neutral: [2, 3, 6, 9]
+  },
+  9: {
+    favorableColors: ['Brown', 'Red'],
+    excellent: [1, 3],
+    good: [5, 6, 9],
+    bad: [2, 8, 7],
+    neutral: [4]
+  }
+};

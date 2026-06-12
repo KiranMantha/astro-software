@@ -5,15 +5,39 @@ $border-style: 1px dotted #555;
 
 .numerology-container {
   .header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+    text-align: center;
     margin-bottom: 25px;
+  }
 
-    input {
-      width: 100%;
-      max-width: 300px;
+  .form {
+    margin: auto;
+    border: none;
+    width: auto;
+
+    td {
+      border: none;
+      vertical-align: baseline;
+
+      input {
+        width: 100%;
+        max-width: 300px;
+
+        & + span {
+          display: inline-block;
+          font-size: 12px;
+          margin-top: 4px;
+        }
+      }
+    }
+  }
+
+  .grid {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+
+    .grid-item {
+      flex: 1;
     }
   }
 
