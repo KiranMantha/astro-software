@@ -1,14 +1,22 @@
+@use '../../utils' as *;
+
 :host {
   display: block;
 }
 
 .nakshatra-pada-form {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
   gap: var(--spacing);
 
   button {
     width: fit-content;
+    align-self: flex-end;
+  }
+
+  @include fromMd {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: flex-end;
   }
 }

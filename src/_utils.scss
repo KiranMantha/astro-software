@@ -1,0 +1,14 @@
+$breakpoint-md: 48rem;
+$breakpoint-lg: 75rem;
+
+@mixin fromMd {
+  @media screen and (min-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin fromLg {
+  @media screen and (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
