@@ -91,15 +91,21 @@ $border-style: 1px dotted #555;
     }
   }
 
+  .shivamayaMatrixForRulingNumber,
   .pythagorean-table,
   .matrix-table,
   .timeline-table {
     width: auto;
   }
 
+  .shivamayaMatrixForRulingNumber,
   .matrix-table,
   .timeline-table {
     border-top: 1px solid var(--border-color);
+  }
+
+  .shivamayaMatrixForRulingNumber {
+    margin: auto;
   }
 
   .matrix-table {

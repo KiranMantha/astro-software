@@ -1,7 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NUMEROLOGY_LETTER_SCORES, NUMEROLOGY_MAP, PYTHAGOREAN_NUMEROLOGY_LETTER_SCORES } from '../../data/constants';
+import {
+  NUMEROLOGY_LETTER_SCORES,
+  NUMEROLOGY_MAP,
+  PYTHAGOREAN_NUMEROLOGY_LETTER_SCORES,
+  SHIVAMAYA_MATRIX_FOR_RULING_NUMBER
+} from '../../data/constants';
 import { LetterScoreItem, TableRow, YearEntry } from './numerology.component.model';
 
 @Component({
@@ -22,6 +27,7 @@ export class NumerologyPyramidComponent {
   showTable: boolean = false;
   pythagoreanScores: LetterScoreItem[] = [];
   yearTimeline: YearEntry[] = [];
+  shivamayaMatrixForRulingNumber: number[][] = [];
 
   // Map representation of the matrix cells to hold arrays of matched letters
   matrixCellLetters: { [key: string]: string[] } = {};
@@ -91,6 +97,9 @@ export class NumerologyPyramidComponent {
       this.buildTableRow('Name number', nameNumber),
       this.buildTableRow('Pyramid number', pyramidNumber)
     ];
+
+    this.shivamayaMatrixForRulingNumber =
+      SHIVAMAYA_MATRIX_FOR_RULING_NUMBER[rulingNumber as keyof typeof SHIVAMAYA_MATRIX_FOR_RULING_NUMBER];
 
     // --- 2. Clockwise Matrix Placements & Year Lists ---
     this.calculateClockwiseMatrixPlacements();

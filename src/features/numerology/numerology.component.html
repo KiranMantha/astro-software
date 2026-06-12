@@ -53,6 +53,19 @@
           }
         </div>
       }
+
+      @if (showTable) {
+        <h3 class="sub-header">Shivamaya Matrix for Ruling Number</h3>
+        <table class="shivamayaMatrixForRulingNumber">
+          @for (rows of shivamayaMatrixForRulingNumber; track rows) {
+            <tr>
+              @for (column of rows; track column) {
+                <td>{{ column }}</td>
+              }
+            </tr>
+          }
+        </table>
+      }
     </div>
     <div class="grid-item">
       @if (showTable) {
