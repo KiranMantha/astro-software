@@ -7,3 +7,13 @@ export type TableRow = {
   bad: string;
   neutral: string;
 };
+
+export type LetterScoreItem = {
+  letter: string;
+  score: number;
+};
+
+export type YearEntry = {
+  label: string;
+  year: number;
+};
