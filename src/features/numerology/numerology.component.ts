@@ -163,11 +163,11 @@ export class NumerologyPyramidComponent {
     return {
       type,
       value: value || null,
-      favColors: data ? data.favorableColors.join(', ') : '-',
-      excellent: data ? data.excellent.join(', ') || 'None' : '-',
-      good: data ? data.good.join(', ') || 'None' : '-',
-      bad: data ? data.bad.join(', ') || 'None' : '-',
-      neutral: data ? data.neutral.join(', ') || 'None' : '-'
+      favoriteColors: data ? data.favorableColors.join(', ') : '-',
+      excellent: data ? data.excellent.join(', ') : '-',
+      good: data ? data.good.join(', ') : '-',
+      bad: data ? data.bad.join(', ') : '-',
+      neutral: data ? data.neutral.join(', ') : '-'
     };
   }
 
