@@ -1,3 +1,5 @@
+@use '../../utils' as *;
+
 // SCSS Variables for easy tweaking
 $cell-size: 45px;
 $bg-color: #fff8dc; // Light cream color matching the image
@@ -32,12 +34,14 @@ $border-style: 1px dotted #555;
   }
 
   .grid {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
+    @include fromMd {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
 
-    .grid-item {
-      flex: 1;
+      .grid-item {
+        width: 100%;
+      }
     }
   }
 
@@ -87,20 +91,23 @@ $border-style: 1px dotted #555;
     }
   }
 
-  .matrix-grid {
-    table-layout: fixed;
-    border-top: 1px solid var(--border-color);
+  .pythagorean-table,
+  .matrix-table,
+  .timeline-table {
+    width: auto;
+  }
 
+  .matrix-table,
+  .timeline-table {
+    border-top: 1px solid var(--border-color);
+  }
+
+  .matrix-table {
     .cell-layout {
       span {
         display: inline-block;
         margin-right: 5px;
       }
     }
-  }
-
-  .timeline-table {
-    border-top: 1px solid var(--border-color);
-    width: auto;
   }
 }
