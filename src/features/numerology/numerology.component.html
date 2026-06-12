@@ -1,22 +1,95 @@
 <div class="numerology-container">
-  <div class="header">
-    <h2>Numerology Pyramid Generator</h2>
-    <input type="text" [(ngModel)]="inputName" (input)="generatePyramid()" placeholder="Enter name here..." />
-  </div>
+  <h2 class="header">Numerology Pyramid Generator</h2>
 
-  <div class="pyramid-grid" *ngIf="lettersRow.length > 0">
-    <div class="grid-row">
-      <div class="cell letter-cell" *ngFor="let letter of lettersRow">
-        {{ letter }}
-      </div>
+  <table class="form">
+    <tr>
+      <td>
+        <label>Name:</label>
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="inputName" (input)="generatePyramid()" placeholder="Enter name here..." />
+      </td>
+    </tr>
+    <tr>
+      <td><label>Date of birth:</label></td>
+      <td>
+        <input
+          type="date"
+          [(ngModel)]="inputDate"
+          (input)="generateFavoritesTable()"
+          (change)="generateFavoritesTable()"
+          placeholder="DD/MM/YYYY"
+        />
+        <span>Format: DD/MM/YYYY</span>
+      </td>
+    </tr>
+  </table>
+
+  <div class="grid">
+    <div class="grid-item">
+      @if (lettersRow.length > 0) {
+        <h3 class="sub-header">Numerology Pyramid</h3>
+        <div class="pyramid-grid">
+          <div class="grid-row">
+            @for (letter of lettersRow; track $index) {
+              <div class="cell letter-cell">
+                {{ letter }}
+              </div>
+            }
+          </div>
+
+          @for (row of pyramidRows; track $index; let rowIndex = $index) {
+            <div class="grid-row">
+              @for (spacer of [].constructor(rowIndex); track $index) {
+                <div class="spacer-cell"></div>
+              }
+
+              @for (cell of row; track $index) {
+                <div class="cell value-cell">
+                  {{ cell }}
+                </div>
+              }
+            </div>
+          }
+        </div>
+      }
     </div>
-
-    <div class="grid-row" *ngFor="let row of pyramidRows; let rowIndex = index">
-      <div class="spacer-cell" *ngFor="let spacer of [].constructor(rowIndex)"></div>
-
-      <div class="cell value-cell" *ngFor="let val of row">
-        {{ val }}
-      </div>
+    <div class="grid-item">
+      @if (showTable) {
+        <div class="favorites-table-container">
+          <h3 class="sub-header">Numerology Profile Breakdown</h3>
+          <table class="favorites-table">
+            <thead>
+              <tr>
+                <th>Number Type</th>
+                <th>Value</th>
+                <th>Fav colours</th>
+                <th>Excellent</th>
+                <th>Good</th>
+                <th>Bad</th>
+                <th>Neutral</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (row of favoritesTable; track row.type) {
+                <tr>
+                  <td>
+                    <strong>{{ row.type }}</strong>
+                  </td>
+                  <td>
+                    <span class="badge">{{ row.value }}</span>
+                  </td>
+                  <td>{{ row.favColors }}</td>
+                  <td>{{ row.excellent }}</td>
+                  <td>{{ row.good }}</td>
+                  <td class="text-danger">{{ row.bad }}</td>
+                  <td>{{ row.neutral }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      }
     </div>
   </div>
 </div>
